@@ -29,7 +29,7 @@ public class DispenserController : MonoBehaviour
         currentTime -= Time.deltaTime;
         if (currentTime <= 0)
         {
-            Debug.Log("Dispensing");
+            //Debug.Log("Dispensing");
             SpawnProjectile();
             currentTime = dispenseTime;
         }

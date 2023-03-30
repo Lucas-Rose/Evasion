@@ -14,6 +14,10 @@ public class ProjectileAudio : MonoBehaviour
     //     //Debug.Log("Setting");
     //     source = GetComponent<AudioSource>(); 
     // }
+    void Awake()
+    {
+        PlayAudio();
+    }
 
     public void PlayAudio()
     {
@@ -25,6 +29,7 @@ public class ProjectileAudio : MonoBehaviour
 
     public IEnumerator InevitableDeath()
     {
+        //This is here to prevent lagging out by having a million on screen at once.
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
     }

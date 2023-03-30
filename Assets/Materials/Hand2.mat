@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hand5
+  m_Name: Hand2
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.16679429, g: 0.990566, b: 0.1448469, a: 1}
-    - _EmissionColor: {r: 0.19224459, g: 0.9528302, b: 0.09438412, a: 1}
+    - _Color: {r: 0.99215686, g: 0.858267, b: 0.14509805, a: 1}
+    - _EmissionColor: {r: 0.9529412, g: 0.64318687, b: 0.09411765, a: 1}

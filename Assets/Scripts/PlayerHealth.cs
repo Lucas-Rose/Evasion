@@ -13,13 +13,24 @@ public class PlayerHealth : MonoBehaviour
     public float defence; //used for variable health scaling
     private float defenceAsPercentage;
     public float shakeScale;
+    public GameObject hand1;
+    public GameObject hand2;
+    public GameObject handTEST;
+
     [HideInInspector]
     public bool invulnerable = false;
     //public float deathDuration = 4;
+    public HandColour handP;
+    public HandColour handS;
+    public HandColour handT;
+    
 
-    public void Start()
+    private void Awake()
     {
         currentHealth = maxHealth;
+        handP = hand1.GetComponent<HandColour>();
+        handS = hand2.GetComponent<HandColour>();
+        handT = handTEST.GetComponent<HandColour>();
     }
 
     public void Update()
@@ -46,8 +57,9 @@ public class PlayerHealth : MonoBehaviour
                 StartCoroutine(Death());
                 break;
             case true:
-                //EventManager.instance.OnHealthChange?.Invoke((currentHealth/maxHealth) * 100);
-                //EventManager.instance.OnTakeDamage?.Invoke(damage);
+                handP.healthLost(currentHealth);
+                handS.healthLost(currentHealth);
+                handT.healthLost(currentHealth);
                 break;
         }
     }

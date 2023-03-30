@@ -19,5 +19,13 @@ public class ProjectileAudio : MonoBehaviour
     {
         Debug.Log("Called to play.");
         source.Play();
+
+        StartCoroutine(InevitableDeath());
+    }
+
+    public IEnumerator InevitableDeath()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 }

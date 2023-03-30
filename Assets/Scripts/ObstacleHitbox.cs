@@ -10,14 +10,14 @@ public class ObstacleHitbox : MonoBehaviour
     private Transform source; //the object the hitbox is attached to
 
     public GameObject collisionParent;
-    public GameObject thisGO;
+    public GameObject deathPoint;
 
     private ProjectileAudio projectileAudio;
     //public PlayerHealth health;
 
     void Awake()
     {
-        projectileAudio = thisGO.GetComponent<ProjectileAudio>();
+        projectileAudio = GetComponent<ProjectileAudio>();
     }
 
 
@@ -33,10 +33,14 @@ public class ObstacleHitbox : MonoBehaviour
             //find the VR controller
                 collisionParent = other.transform.parent.gameObject;
                 PlayerHealth health = collisionParent.GetComponent<PlayerHealth>();
-                Destroy(gameObject);
+                
                 //sound effect
-                projectileAudio.PlayAudio();
                 //anim
+                spawnDestroyedPoint();
+
+                //Destroy MUST be last handling object.
+                //Nothing else can persist from object after this.
+                Destroy(gameObject);
 
                 //Player not dead
                 if (health.currentHealth > 0)
@@ -51,6 +55,12 @@ public class ObstacleHitbox : MonoBehaviour
                 break;
         }
         
+    }
+
+    private void spawnDestroyedPoint()
+    {
+        GameObject newDeath = Instantiate(deathPoint);
+        //projectileAudio.PlayAudio();
     }
 
     //Hitbox disabled after collision based on hitLockout value. Prevents multiple collisions with the same object

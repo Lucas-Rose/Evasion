@@ -10,11 +10,15 @@ public class ObstacleHitbox : MonoBehaviour
     private Transform source; //the object the hitbox is attached to
 
     public GameObject collisionParent;
+    public GameObject thisGO;
+
+    private ProjectileAudio projectileAudio;
     //public PlayerHealth health;
 
-    // void start(){
-    //     health = VRMain.GetComponent<PlayerHealth>();
-    // }
+    void Awake()
+    {
+        projectileAudio = thisGO.GetComponent<ProjectileAudio>();
+    }
 
 
     //do when colliding with another object
@@ -30,6 +34,10 @@ public class ObstacleHitbox : MonoBehaviour
                 collisionParent = other.transform.parent.gameObject;
                 PlayerHealth health = collisionParent.GetComponent<PlayerHealth>();
                 Destroy(gameObject);
+                //sound effect
+                projectileAudio.PlayAudio();
+                //anim
+
                 //Player not dead
                 if (health.currentHealth > 0)
                 {

@@ -10,6 +10,10 @@ public class DispenserController : MonoBehaviour
     [SerializeField] private float maxProjSize;
     [SerializeField] private float minProjSize;
     [SerializeField] private float maxProjectileCount;
+    //band-aid fix
+    [SerializeField] private float currentProjectileCount;
+    public GameObject self;
+
 
     private List<GameObject> activeProjectiles;
     private float currentTime;
@@ -45,9 +49,16 @@ public class DispenserController : MonoBehaviour
         newProj.transform.localScale = new Vector3(projSize, projSize, projSize);
         newProj.GetComponent<Rigidbody>().velocity = -Vector3.forward * projectileSpeed;
         activeProjectiles.Add(newProj);
-        if (activeProjectiles.Count >= maxProjectileCount)
+        currentProjectileCount += 1;
+        if (currentProjectileCount >= maxProjectileCount) //currentProjectileCount instead of.count
         {
             Destroy(transform.GetChild(0).gameObject);
+            currentProjectileCount -= 1;
         }
+    }
+
+    public void destroyedElsewhere()
+    {
+        currentProjectileCount -= 1;
     }
 }

@@ -57,9 +57,13 @@ public class PlayerHealth : MonoBehaviour
                 StartCoroutine(Death());
                 break;
             case true:
-                handP.healthLost(currentHealth);
-                handS.healthLost(currentHealth);
-                handT.healthLost(currentHealth);
+                if(currentHealth > 0)
+                {
+                    handP.healthLost(currentHealth);
+                    handS.healthLost(currentHealth);
+                    handT.healthLost(currentHealth);
+                }
+                
                 break;
         }
     }

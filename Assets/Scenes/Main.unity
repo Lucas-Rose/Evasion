@@ -740,6 +740,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material5
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bd58008e1319144bafbb8655a0a912d, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material4
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bcedf33b50bbcd4490e9de5f9e38ce6, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material3
+      value: 
+      objectReference: {fileID: 2100000, guid: c418fb4dd78587e44acb16c5f7f0d97f, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material2
+      value: 
+      objectReference: {fileID: 2100000, guid: 831639220829677439f9994f31675932, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material1
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e955003b25e3d5419a606cb455a833e, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Object
+      value: 
+      objectReference: {fileID: 1317379135}
     - target: {fileID: 2682986663998555776, guid: 3c3eec12921edd34c897b9cf35e1dd63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1112,6 +1142,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Object
+      value: 
+      objectReference: {fileID: 1932091941}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material5
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bd58008e1319144bafbb8655a0a912d, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material4
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bcedf33b50bbcd4490e9de5f9e38ce6, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material3
+      value: 
+      objectReference: {fileID: 2100000, guid: c418fb4dd78587e44acb16c5f7f0d97f, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material2
+      value: 
+      objectReference: {fileID: 2100000, guid: 831639220829677439f9994f31675932, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material1
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e955003b25e3d5419a606cb455a833e, type: 2}
     - target: {fileID: 2682986663998555776, guid: 3c3eec12921edd34c897b9cf35e1dd63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1233,6 +1293,8 @@ MonoBehaviour:
   maxProjSize: 1.2
   minProjSize: 0.3
   maxProjectileCount: 10
+  currentProjectileCount: 0
+  self: {fileID: 0}
 --- !u!1001 &1671869021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1245,6 +1307,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand
       objectReference: {fileID: 0}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Object
+      value: 
+      objectReference: {fileID: 341090715}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material5
+      value: 
+      objectReference: {fileID: 2100000, guid: 7bd58008e1319144bafbb8655a0a912d, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material4
+      value: 
+      objectReference: {fileID: 2100000, guid: 4bcedf33b50bbcd4490e9de5f9e38ce6, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material3
+      value: 
+      objectReference: {fileID: 2100000, guid: c418fb4dd78587e44acb16c5f7f0d97f, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material2
+      value: 
+      objectReference: {fileID: 2100000, guid: 831639220829677439f9994f31675932, type: 2}
+    - target: {fileID: 6311877402078366052, guid: 3c3eec12921edd34c897b9cf35e1dd63,
+        type: 3}
+      propertyPath: Material1
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e955003b25e3d5419a606cb455a833e, type: 2}
     - target: {fileID: 2682986663998555776, guid: 3c3eec12921edd34c897b9cf35e1dd63,
         type: 3}
       propertyPath: m_LocalPosition.x

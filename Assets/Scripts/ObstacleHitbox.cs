@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class ObstacleHitbox : MonoBehaviour
 {
-    public float hitLockout; 
+    //public float hitLockout; 
     public float damage;
 
     private Transform source; //the object the hitbox is attached to
 
     public GameObject collisionParent;
+    public GameObject dispenser;
     public GameObject deathPoint;
 
-    private ProjectileAudio projectileAudio;
+    //private ProjectileAudio projectileAudio;
     //public PlayerHealth health;
 
-    void Awake()
-    {
-        projectileAudio = GetComponent<ProjectileAudio>();
-    }
+    // void Awake()
+    // {
+    //     projectileAudio = GetComponent<ProjectileAudio>();
+    // }
 
 
     //do when colliding with another object
@@ -38,6 +39,12 @@ public class ObstacleHitbox : MonoBehaviour
                 //anim
                 spawnDestroyedPoint();
 
+                //band-aid fix
+                dispenser = transform.parent.gameObject;
+                DispenserController disp = dispenser.GetComponent<DispenserController>();
+
+                disp.destroyedElsewhere();
+
                 //Destroy MUST be last handling object.
                 //Nothing else can persist from object after this.
                 Destroy(gameObject);
@@ -48,10 +55,10 @@ public class ObstacleHitbox : MonoBehaviour
                     health.takeDamage(damage);
                 }
 
-                if (hitLockout > 0) 
-                {
-                    StartCoroutine(lockout(hitLockout));
-                }
+                // if (hitLockout > 0) 
+                // {
+                //     StartCoroutine(lockout(hitLockout));
+                // }
                 break;
         }
         

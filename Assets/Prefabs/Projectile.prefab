@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329bfe79095a76d488b0617d772799f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitLockout: 1
+  hitLockout: 0
   damage: 1
   collisionParent: {fileID: 0}
   deathPoint: {fileID: 5876689664418976287, guid: 0cac47929c1d0b94fbce171e372af832,

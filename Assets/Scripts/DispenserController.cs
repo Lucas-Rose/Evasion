@@ -44,6 +44,7 @@ public class DispenserController : MonoBehaviour
         float projSize = Random.Range(minProjSize, maxProjSize);
         newProj.transform.localScale = new Vector3(projSize, projSize, projSize);
         newProj.GetComponent<Rigidbody>().velocity = -Vector3.forward * projectileSpeed;
+        newProj.GetComponent<Rigidbody>().angularVelocity = Vector3.left * projectileSpeed;
         activeProjectiles.Add(newProj);
         if (activeProjectiles.Count >= maxProjectileCount)
         {

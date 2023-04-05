@@ -66,7 +66,7 @@ public class ObstacleHitbox : MonoBehaviour
 
     private void spawnDestroyedPoint()
     {
-        GameObject newDeath = Instantiate(deathPoint);
+        GameObject newDeath = Instantiate(deathPoint, transform.position, transform.rotation);
         //projectileAudio.PlayAudio();
     }
 

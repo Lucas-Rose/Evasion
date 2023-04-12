@@ -11,24 +11,31 @@ public class PlayerHealth : MonoBehaviour
     public float defence; //used for variable health scaling
     private float defenceAsPercentage;
     public float shakeScale;
-    public GameObject hand1;
-    public GameObject hand2;
-    public GameObject handTEST;
+
+    //anything hand related is commented out for this build here.
+
+    // public GameObject hand1;
+    // public GameObject hand2;
+    // public GameObject handTEST;
+    //Done here rather than in obstacle hitbox to prevent needing to re-call
+    [SerializeField] GameObject gManager;
 
     [HideInInspector]
     public bool invulnerable = false;
     //public float deathDuration = 4;
-    public HandColour handP;
-    public HandColour handS;
-    public HandColour handT;
+    // public HandColour handP;
+    // public HandColour handS;
+    // public HandColour handT;
+    private GameManager gameMan;
     
 
     private void Awake()
     {
         currentHealth = maxHealth;
-        handP = hand1.GetComponent<HandColour>();
-        handS = hand2.GetComponent<HandColour>();
-        handT = handTEST.GetComponent<HandColour>();
+        // handP = hand1.GetComponent<HandColour>();
+        // handS = hand2.GetComponent<HandColour>();
+        // handT = handTEST.GetComponent<HandColour>();
+        GameManager gameMan = gManager.GetComponent<GameManager>();
     }
 
     public void Update()
@@ -48,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         damage *= (100/(100 + defence));
         damage = Mathf.Clamp(damage, 0f, Mathf.Infinity);
         currentHealth -= damage;
+        gameMan.ScoreReset();
 
         switch (Alive()) 
         {
@@ -57,9 +65,9 @@ public class PlayerHealth : MonoBehaviour
             case true:
                 if(currentHealth > 0)
                 {
-                    handP.healthLost(currentHealth);
-                    handS.healthLost(currentHealth);
-                    handT.healthLost(currentHealth);
+                    // handP.healthLost(currentHealth);
+                    // handS.healthLost(currentHealth);
+                    // handT.healthLost(currentHealth);
                 }
                 
                 break;

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonTrigger : ScriptableObject
+public class ProjectileEvent : ScriptableObject
 {
         [SerializeField] private float time;
-        [SerializeField] private float speed;
+        [SerializeField] private float tracking;
         [SerializeField] private float cannon;
-        public CannonTrigger init(float time, float speed, float cannon)
+        public ProjectileEvent init(float time, float tracking, float cannon)
         {
             this.time = time;
-            this.speed = speed;
+            this.tracking = tracking;
             this.cannon = cannon;
         return this;
         }
@@ -18,9 +18,9 @@ public class CannonTrigger : ScriptableObject
         {
             return time;
         }
-        public float getSpeed()
+        public float getTracking()
         {
-            return speed;
+            return (int)tracking;
         }
         public int getCannon()
         {

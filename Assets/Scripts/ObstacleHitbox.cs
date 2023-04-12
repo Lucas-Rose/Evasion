@@ -43,7 +43,7 @@ public class ObstacleHitbox : MonoBehaviour
                 dispenser = transform.parent.gameObject;
                 DispenserController disp = dispenser.GetComponent<DispenserController>();
 
-                disp.destroyedElsewhere();
+                //disp.destroyedElsewhere();
 
                 //Destroy MUST be last handling object.
                 //Nothing else can persist from object after this.

@@ -14,18 +14,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject backText;
     private Text foregroundText;
     private Text backgroundText;
-    private float score;
+    [SerializeField] float score;
     [SerializeField] float startingScoreMultiplier;
     [SerializeField] float scoreMultiplierIncresase;
     [SerializeField] float scoreMultiplierCap;
     [SerializeField] float scoreCounterThreshold;
     private float scoreCounter;
     public float scoreMultiplier; //needs to be public to be edited by collision
-    private bool playing;
+    [SerializeField] bool playing;
     // Start is called before the first frame update
     void Start()
     {
         playing = false;
+        //playing = true; // set for testing
         canvas.SetActive(true);
         dispenser.SetActive(false);
         mat.color = defaultRoomColor;

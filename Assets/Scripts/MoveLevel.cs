@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveLevel : MonoBehaviour
 {
     private Vector3 startPos;
-    private float length;
-    [SerializeField] float speed;
+    public float length;
+    public float speed;
     [SerializeField] BoxCollider floor;
 
 

@@ -4,37 +4,88 @@ using UnityEngine;
 
 public class DispenserController : MonoBehaviour
 {
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float dispenseTime;
-    [SerializeField] private float projectileSpeed;
-    private float currentTime;
 
-    private BoxCollider col; //used to determine the size of the area in which projectiles can spawn
-    // Start is called before the first frame update
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private float projectileSpeed;
+    [SerializeField] private float maxProjSize;
+    [SerializeField] private float minProjSize;
+    [SerializeField] private float maxProjectileCount;
+    [SerializeField] private GameObject spawnPointContainer;
+    [SerializeField] private float trackAccuracyDamp;
+    [SerializeField] private Vector3[] projectileEventInfo;
+
+    private List<ProjectileEvent> projectileEvents = new List<ProjectileEvent>();
+    private List<GameObject> spawnPoints = new List<GameObject>();
+    private List<GameObject> activeProjectiles = new List<GameObject>();
+    private List<float> projectileTimes = new List<float>();
+    private float currentTime;
     void Start()
     {
-        currentTime = dispenseTime;
-        col = GetComponent<BoxCollider>();
+        for(int i = 0; i < spawnPointContainer.transform.childCount; i++)
+        {
+            spawnPoints.Add(spawnPointContainer.transform.GetChild(i).gameObject);
+        }
+        CreateProjectileSequence();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTime -= Time.deltaTime;
-        if(currentTime <= 0)
+        currentTime += Time.deltaTime;
+        if(projectileEvents.Count > 0)
         {
-            Debug.Log("Dispensing");
-            SpawnProjectile();
-            currentTime = dispenseTime;
+            Debug.Log(projectileEvents.Count);
+            if (currentTime > projectileEvents[0].getTime())
+            {
+                SpawnProjectile();
+            }
         }
+       
     }
 
     public void SpawnProjectile()
     {
-        float xPos = Random.Range(transform.position.x - (col.size.x / 2), transform.position.x + (col.size.x / 2));
-        float yPos = Random.Range(transform.position.y - (col.size.y / 2), transform.position.y + (col.size.y / 2));
-        Quaternion randomRotation = Random.rotation;
-        GameObject newProj = Instantiate(projectilePrefab, new Vector3(xPos, yPos, transform.position.z), randomRotation);
-        newProj.GetComponent<Rigidbody>().velocity = -Vector3.forward * projectileSpeed;
+        GameObject newProj = Instantiate(projectilePrefab, spawnPoints[projectileEvents[0].getCannon()].transform.position, Quaternion.identity);
+        Rigidbody rb = newProj.GetComponent<Rigidbody>();
+        Vector3 dir;
+        if(projectileEvents[0].getTracking() == 0)
+        {
+            dir = Vector3.back * projectileSpeed;
+        }
+        else
+        {
+            Vector3 dampTarget = new Vector3(playerTransform.position.x + Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
+                playerTransform.position.y + Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
+                playerTransform.position.z + Random.Range(-trackAccuracyDamp, trackAccuracyDamp));
+            dir = (dampTarget - newProj.transform.position).normalized * projectileSpeed;
+        }
+        rb.useGravity = false;
+        rb.velocity = dir;
+        rb.angularVelocity = new Vector3(Random.Range(1, 2), Random.Range(1, 2), Random.Range(1, 2));
+        transform.rotation = Random.rotation;
+        activeProjectiles.Add(newProj);
+        projectileTimes.RemoveAt(0);
+        projectileEvents.RemoveAt(0);
+
+
+        if (activeProjectiles.Count > maxProjectileCount)
+        {
+            Destroy(activeProjectiles[0]);
+            activeProjectiles.RemoveAt(0);
+        }
+    }
+
+    public void CreateProjectileSequence()
+    {
+        for (int i = 0; i < projectileEventInfo.Length; i++)
+        {
+            //x = time in sequence, y = directed at player? (0 = no, 1 = yes), z = spawnPoint identifier)
+            projectileEvents.Add(ScriptableObject.CreateInstance<ProjectileEvent>().init(projectileEventInfo[i].x, projectileEventInfo[i].y, projectileEventInfo[i].z));
+        }
+        for(int i = 0; i < projectileEvents.Count; i++)
+        {
+            projectileTimes.Add(projectileEvents[i].getTime());
+        }
     }
 }

@@ -6,8 +6,8 @@ public class CannonTrigger : ScriptableObject
 {
         [SerializeField] private float time;
         [SerializeField] private float speed;
-        [SerializeField] private int cannon;
-        public CannonTrigger init(float time, float speed, int cannon)
+        [SerializeField] private float cannon;
+        public CannonTrigger init(float time, float speed, float cannon)
         {
             this.time = time;
             this.speed = speed;
@@ -24,6 +24,6 @@ public class CannonTrigger : ScriptableObject
         }
         public int getCannon()
         {
-            return cannon;
+            return (int)cannon;
         }
 }

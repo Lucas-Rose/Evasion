@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManager;
+using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public Animator transition;
@@ -12,23 +12,24 @@ public class SceneLoader : MonoBehaviour
     void Update()
     {
         // trigger next level on click (can change later)
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetKey(KeyCode.Space)){
             LoadNextLevel();
         }
     }
 
 
-    public void LoadNextLevel(){
+    public void LoadNextLevel()
+        {
         // progesses the scene based on order of scene order 
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1))
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
    
     IEnumerator LoadLevel(int levelIndex){
         // paly animation 
         transition.SetTrigger("start");
         // waiting for animation to stop 
-        yeild return new WaitForSecond(transitionTime);
+        yield return new WaitForSeconds(transitionTime);
         // load the scene 
-        SceneManager.LoadScene(levelIndex)
+        SceneManager.LoadScene(levelIndex);
     }
 }

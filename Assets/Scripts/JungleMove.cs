@@ -39,7 +39,7 @@ public class JungleMove : MonoBehaviour
         transform.Translate(Vector3.back * Time.deltaTime * speed);
 
         //Off screen (Same pop out point as movelevel reset)
-        if(transform.position.z < startPos.z - length)
+        if(transform.position.z < startPos.z - length*4)
         {
             Destroy(gameObject);
         }

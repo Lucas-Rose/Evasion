@@ -2768,6 +2768,7 @@ MonoBehaviour:
   scoreMultiplierCap: 10
   scoreCounterThreshold: 4
   scoreMultiplier: 0
+  playing: 0
 --- !u!4 &666029830
 Transform:
   m_ObjectHideFlags: 0

@@ -25,17 +25,17 @@ public class JungleMap : MonoBehaviour
     //the counter and array aren't really necessary in this version
     {
         yield return new WaitForSeconds(1);
-        Vector3 pos1 = new Vector3(transform.position.x + -3.36f, transform.position.y, transform.position.z);
+        Vector3 pos1 = new Vector3(transform.position.x + -1.36f, transform.position.y, transform.position.z);
         Instantiate(jungleTree1, pos1, Quaternion.identity);
         coordPositions[counter] = pos1;
         yield return new WaitForSeconds(1);
         counter++;
-        Vector3 pos2 = new Vector3(transform.position.x + 4f, transform.position.y, transform.position.z);
+        Vector3 pos2 = new Vector3(transform.position.x + 2f, transform.position.y, transform.position.z);
         Instantiate(jungleTree2, pos2, Quaternion.identity);
         coordPositions[counter] = pos2;
         yield return new WaitForSeconds(1.5f);
         counter++;
-        Vector3 pos3 = new Vector3(transform.position.x + 5.0f, transform.position.y, transform.position.z);
+        Vector3 pos3 = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z);
         Instantiate(jungleTree1, pos3, Quaternion.identity);
         coordPositions[counter] = pos3;
         yield return new WaitForSeconds(.25f);

@@ -14,12 +14,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject backText;
     private Text foregroundText;
     private Text backgroundText;
-    private float score;
-    private bool playing;
+    [SerializeField] float score;
+    [SerializeField] float startingScoreMultiplier;
+    [SerializeField] float scoreMultiplierIncresase;
+    [SerializeField] float scoreMultiplierCap;
+    [SerializeField] float scoreCounterThreshold;
+    private float scoreCounter;
+    public float scoreMultiplier; //needs to be public to be edited by collision
+    [SerializeField] bool playing;
     // Start is called before the first frame update
     void Start()
     {
         playing = false;
+        //playing = true; // set for testing
         canvas.SetActive(true);
         dispenser.SetActive(false);
         mat.color = defaultRoomColor;
@@ -27,6 +34,7 @@ public class GameManager : MonoBehaviour
         backText.SetActive(false);
         foregroundText = foreText.GetComponent<Text>();
         backgroundText = backText.GetComponent<Text>();
+        scoreMultiplier = startingScoreMultiplier;
     }
 
     // Update is called once per frame
@@ -34,7 +42,15 @@ public class GameManager : MonoBehaviour
     {
         if (playing)
         {
-            score += Time.deltaTime;
+            //near misses are a to-do down the line
+            score += Time.deltaTime * scoreMultiplier;
+            scoreCounter += Time.deltaTime;
+            if(scoreCounter > scoreCounterThreshold)
+            {
+                ScoreMultiplierIncrease();
+                scoreCounter = 0;
+            }
+
         }
         
         if (Input.GetKeyDown(KeyCode.Space))
@@ -55,4 +71,21 @@ public class GameManager : MonoBehaviour
             backgroundText.text = score.ToString("F1");
         } 
     }
+
+    public void ScoreReset()
+    {
+        scoreMultiplier = startingScoreMultiplier;
+        scoreCounter = 0;
+    }
+
+    void ScoreMultiplierIncrease()
+    {
+        scoreMultiplier += scoreMultiplierIncresase;
+        if(scoreMultiplier > scoreMultiplierCap)
+        {
+            scoreMultiplier = scoreMultiplierCap;
+        }
+    }
+    
+
 }

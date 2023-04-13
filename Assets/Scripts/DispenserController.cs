@@ -62,8 +62,7 @@ public class DispenserController : MonoBehaviour
         }
         rb.useGravity = false;
         rb.velocity = dir;
-        rb.angularVelocity = new Vector3(Random.Range(1, 2), Random.Range(1, 2), Random.Range(1, 2));
-        transform.rotation = Random.rotation;
+        rb.angularVelocity = new Vector3(100f/Random.Range(1, 100), 100f/Random.Range(1, 100), 100f/Random.Range(1, 100));
         activeProjectiles.Add(newProj);
         projectileTimes.RemoveAt(0);
         projectileEvents.RemoveAt(0);

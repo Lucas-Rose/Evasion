@@ -701,23 +701,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 743035805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48ae99ffa604e5a47a3793f21987c297, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b170e05a4eae4f4dbe7f4ccc4c97f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cBallPrefab: {fileID: 5297936316532779639, guid: d202687681e1ea84581677ffad6ca40b,
+  playerTransform: {fileID: 1706014984}
+  projectilePrefab: {fileID: 5297936316532779639, guid: d202687681e1ea84581677ffad6ca40b,
     type: 3}
-  player: {fileID: 1706014983}
-  maxCannonBalls: 4
-  cannons: {fileID: 217619968}
-  cannonObjects: []
-  cannonEvents:
-  - {x: 1, y: 50, z: 1}
-  - {x: 2, y: 50, z: 2}
-  - {x: 3, y: 50, z: 3}
-  - {x: 4, y: 50, z: 4}
-  - {x: 5, y: 50, z: 5}
-  cannonTriggers: []
-  triggerTimes: []
+  projectileSpeed: 20
+  maxProjSize: 1
+  minProjSize: 1
+  maxProjectileCount: 20
+  spawnPointContainer: {fileID: 217619968}
+  trackAccuracyDamp: 1
+  projectileEventInfo:
+  - {x: 1, y: 0, z: 5}
+  - {x: 1.5, y: 0, z: 2}
+  - {x: 2, y: 1, z: 8}
+  - {x: 2.5, y: 1, z: 5}
+  - {x: 3, y: 1, z: 6}
+  - {x: 3.5, y: 0, z: 1}
+  - {x: 4, y: 0, z: 2}
+  - {x: 4.5, y: 0, z: 3}
+  - {x: 5, y: 1, z: 4}
+  - {x: 5.5, y: 1, z: 5}
 --- !u!1 &743995646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,9 +1039,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1535090469}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1706014983 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1260162968516261970, guid: 22276a8657744e04cba8ad0a2caf4195,
+--- !u!4 &1706014984 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1260162968516261969, guid: 22276a8657744e04cba8ad0a2caf4195,
     type: 3}
   m_PrefabInstance: {fileID: 1535090469}
   m_PrefabAsset: {fileID: 0}

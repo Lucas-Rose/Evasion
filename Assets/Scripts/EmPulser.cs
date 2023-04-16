@@ -4,21 +4,44 @@ using UnityEngine;
 
 public class EmPulser : MonoBehaviour
 {
-    public float duration;
     private Material myMat;
+    [Header("Colours")]
+    [SerializeField] private Color glowColour;
+    private float hue;
+    private float saturation;
+    private float value;
+
+    [Header("Pulse")]
+    [SerializeField] private float pulseFrequency;
+    [SerializeField] private float pulseIntensity;
+    [SerializeField] private float dimMultiplier;
+    private float currTime;
+
 
     // Update is called once per frame
     void Start()
     {
         myMat = GetComponent<Renderer>().material;
+        currTime = pulseFrequency;
+        Color.RGBToHSV(glowColour, out hue, out saturation, out value);
+        Debug.Log(value);
     }
     void Update()
     {
-        float phi = Time.deltaTime / duration * 2 * Mathf.PI;
-        float amplitude = Mathf.Cos(phi) * 0.5f + 0.5f;
-        float R = amplitude;
-        float B = amplitude/8;
+        value -= Time.deltaTime * dimMultiplier;
+        currTime -= Time.deltaTime;
+        if(currTime <= 0)
+        {
+            ReLight();
+            currTime = pulseFrequency;
+        }
+        glowColour = Color.HSVToRGB(hue, saturation, value);
+        myMat.SetColor("_EmissionColor", glowColour);
+        Debug.Log(value);
+    }
 
-        myMat.SetColor("_EmissionColor", new Color(R, 0f, B));
+    public void ReLight()
+    {
+        value = pulseIntensity;
     }
 }

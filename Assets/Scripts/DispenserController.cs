@@ -34,8 +34,7 @@ public class DispenserController : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         if(projectileEvents.Count > 0)
-        {
-            Debug.Log(projectileEvents.Count);
+        { 
             if (currentTime > projectileEvents[0].getTime())
             {
                 SpawnProjectile();

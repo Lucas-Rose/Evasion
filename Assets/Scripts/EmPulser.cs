@@ -15,29 +15,66 @@ public class EmPulser : MonoBehaviour
     [SerializeField] private float pulseFrequency;
     [SerializeField] private float pulseIntensity;
     [SerializeField] private float dimMultiplier;
-    private float currTime;
+    private float pulseTime;
+
+    [Header("Wall Pulse")]
+    [SerializeField] private GameObject wallPulse;
+    [SerializeField] private float pulseSpeed;
+    [SerializeField] private float wallPulseFrequency;
+    private float startingPoint;
+    private float wallPulseTime;
 
 
     // Update is called once per frame
     void Start()
     {
+        if(wallPulse != null)
+        {
+            wallPulseTime = wallPulseFrequency;
+            startingPoint = wallPulse.transform.position.z;
+        }
         myMat = GetComponent<Renderer>().material;
-        currTime = pulseFrequency;
-        Color.RGBToHSV(glowColour, out hue, out saturation, out value);
-        Debug.Log(value);
+        if (myMat != null)
+        {
+            pulseTime = pulseFrequency;
+            Color.RGBToHSV(glowColour, out hue, out saturation, out value);
+        }
     }
     void Update()
     {
-        value -= Time.deltaTime * dimMultiplier;
-        currTime -= Time.deltaTime;
-        if(currTime <= 0)
+        if(myMat != null)
         {
-            ReLight();
-            currTime = pulseFrequency;
+            value -= Time.deltaTime * dimMultiplier;
+            pulseTime -= Time.deltaTime;
+
+            if (pulseTime <= 0)
+            {
+                ReLight();
+                pulseTime = pulseFrequency;
+            }
+            glowColour = Color.HSVToRGB(hue, saturation, value);
+            myMat.SetColor("_EmissionColor", glowColour);
         }
-        glowColour = Color.HSVToRGB(hue, saturation, value);
-        myMat.SetColor("_EmissionColor", glowColour);
-        Debug.Log(value);
+
+        if(wallPulse != null)
+        {
+            wallPulseTime -= Time.deltaTime;
+            if (wallPulseTime <= 0)
+            {
+                RePulse();
+                wallPulseTime = wallPulseFrequency;
+            }
+            wallPulse.transform.Translate(Vector3.back * pulseSpeed * Time.deltaTime);
+        }
+        
+
+        
+        
+        
+    }
+    public void RePulse()
+    {
+        wallPulse.transform.position = new Vector3(0, 5, startingPoint);
     }
 
     public void ReLight()

@@ -33,7 +33,11 @@ public class EmPulser : MonoBehaviour
             wallPulseTime = wallPulseFrequency;
             startingPoint = wallPulse.transform.position.z;
         }
-        myMat = GetComponent<Renderer>().material;
+        if(GetComponent<Renderer>() != null)
+        {
+            myMat = GetComponent<Renderer>().material;
+        }
+        
         if (myMat != null)
         {
             pulseTime = pulseFrequency;

@@ -327,7 +327,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1260162969912512422, guid: 22276a8657744e04cba8ad0a2caf4195, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22276a8657744e04cba8ad0a2caf4195, type: 3}
 --- !u!4 &141072768 stripped
 Transform:
@@ -798,7 +799,7 @@ MonoBehaviour:
   dimMultiplier: 0
   wallPulse: {fileID: 594768085}
   pulseSpeed: 10
-  wallPulseFrequency: 5
+  wallPulseFrequency: 7
 --- !u!4 &303314522
 Transform:
   m_ObjectHideFlags: 0
@@ -3295,6 +3296,36 @@ Transform:
   m_Father: {fileID: 1597221781}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1488654508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1488654509}
+  m_Layer: 0
+  m_Name: ProjectileContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1488654509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488654508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1636667371}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1511362216
 GameObject:
   m_ObjectHideFlags: 0
@@ -3670,7 +3701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1636667371
 Transform:
   m_ObjectHideFlags: 0
@@ -3683,6 +3714,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1597221781}
+  - {fileID: 1488654509}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3698,88 +3730,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b170e05a4eae4f4dbe7f4ccc4c97f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 1914262797}
-  projectilePrefab: {fileID: 8502318440139215113, guid: d5a8b7d9596aa0a499b17961c35022b1,
-    type: 3}
-  projectileSpeed: 10
-  maxProjSize: 1.2
-  minProjSize: 0.4
+  bpm: 124
+  beatProjSpeed: 10
+  musicCalendar:
+  - {x: 0, y: 0}
+  - {x: 15, y: 1}
+  - {x: 15, y: 2}
+  - {x: 31, y: 0}
+  - {x: 61.5, y: 1}
+  - {x: 61.5, y: 3}
   maxProjectileCount: 18
   spawnPointContainer: {fileID: 1597221780}
+  maxProjSize: 1.2
+  minProjSize: 0.4
+  timeProjectilePrefab: {fileID: 8502318440139215113, guid: d5a8b7d9596aa0a499b17961c35022b1,
+    type: 3}
+  musicProjectilePrefab: {fileID: 8502318440139215113, guid: 9d49be292b7b1b1499b1f20a3f688055,
+    type: 3}
+  playerTransform: {fileID: 1914262797}
   trackAccuracyDamp: 1
   projectileEventInfo:
-  - {x: 2, y: 0, z: 0}
-  - {x: 2, y: 0, z: 1}
-  - {x: 2, y: 0, z: 2}
-  - {x: 2, y: 0, z: 3}
-  - {x: 2, y: 0, z: 4}
-  - {x: 2, y: 0, z: 5}
-  - {x: 2, y: 0, z: 6}
-  - {x: 2, y: 0, z: 7}
-  - {x: 2, y: 0, z: 8}
-  - {x: 2, y: 0, z: 9}
-  - {x: 2, y: 0, z: 10}
-  - {x: 2, y: 0, z: 11}
-  - {x: 2, y: 0, z: 12}
-  - {x: 2, y: 0, z: 13}
-  - {x: 2, y: 0, z: 14}
-  - {x: 2, y: 0, z: 15}
-  - {x: 2, y: 0, z: 16}
-  - {x: 2, y: 0, z: 17}
-  - {x: 6, y: 1, z: 0}
-  - {x: 6, y: 1, z: 1}
-  - {x: 6, y: 1, z: 2}
-  - {x: 6, y: 1, z: 3}
-  - {x: 6, y: 1, z: 4}
-  - {x: 6, y: 1, z: 5}
-  - {x: 6, y: 1, z: 6}
-  - {x: 6, y: 1, z: 7}
-  - {x: 6, y: 1, z: 8}
-  - {x: 6, y: 1, z: 9}
-  - {x: 6, y: 1, z: 10}
-  - {x: 6, y: 1, z: 11}
-  - {x: 6, y: 1, z: 12}
-  - {x: 6, y: 1, z: 13}
-  - {x: 6, y: 1, z: 14}
-  - {x: 6, y: 1, z: 15}
-  - {x: 6, y: 1, z: 16}
-  - {x: 6, y: 1, z: 17}
-  - {x: 7, y: 0, z: 0}
-  - {x: 7.5, y: 0, z: 1}
-  - {x: 8, y: 0, z: 2}
-  - {x: 8.5, y: 0, z: 3}
-  - {x: 9, y: 0, z: 4}
-  - {x: 9.5, y: 0, z: 5}
-  - {x: 10, y: 0, z: 6}
-  - {x: 10.5, y: 0, z: 7}
-  - {x: 11, y: 0, z: 8}
-  - {x: 11.5, y: 0, z: 9}
-  - {x: 12, y: 0, z: 10}
-  - {x: 12.5, y: 0, z: 11}
-  - {x: 13, y: 0, z: 12}
-  - {x: 13.5, y: 0, z: 13}
-  - {x: 14, y: 0, z: 14}
-  - {x: 14.5, y: 0, z: 15}
-  - {x: 15, y: 0, z: 16}
-  - {x: 15.5, y: 0, z: 17}
-  - {x: 16, y: 1, z: 0}
-  - {x: 16.5, y: 1, z: 1}
-  - {x: 17, y: 1, z: 2}
-  - {x: 17.5, y: 1, z: 3}
-  - {x: 18, y: 1, z: 4}
-  - {x: 18.5, y: 1, z: 5}
-  - {x: 19, y: 1, z: 6}
-  - {x: 19.5, y: 1, z: 7}
-  - {x: 20, y: 1, z: 8}
-  - {x: 20.5, y: 1, z: 9}
-  - {x: 21, y: 1, z: 10}
-  - {x: 21.5, y: 1, z: 11}
-  - {x: 22, y: 1, z: 12}
-  - {x: 22.5, y: 1, z: 13}
-  - {x: 23, y: 1, z: 14}
-  - {x: 23.5, y: 1, z: 15}
-  - {x: 24, y: 1, z: 16}
-  - {x: 24.5, y: 1, z: 17}
+  - {x: 1, y: 10, z: 0, w: 0}
+  - {x: 2, y: 10, z: 0, w: 1}
+  - {x: 3, y: 10, z: 0, w: 2}
+  - {x: 4, y: 10, z: 1, w: 3}
+  - {x: 5, y: 10, z: 1, w: 4}
+  - {x: 6, y: 10, z: 0, w: 5}
+  - {x: 7, y: 10, z: 0, w: 6}
+  - {x: 8, y: 10, z: 0, w: 7}
+  - {x: 9, y: 10, z: 8, w: 8}
+  - {x: 10, y: 10, z: 0, w: 9}
+  - {x: 11, y: 10, z: 0, w: 10}
+  - {x: 12, y: 10, z: 0, w: 11}
+  - {x: 13, y: 10, z: 0, w: 12}
+  - {x: 14, y: 10, z: 0, w: 13}
+  - {x: 15, y: 10, z: 0, w: 14}
+  - {x: 16, y: 10, z: 0, w: 15}
+  - {x: 17, y: 10, z: 0, w: 16}
+  - {x: 18, y: 10, z: 0, w: 17}
 --- !u!43 &1654034991
 Mesh:
   m_ObjectHideFlags: 0

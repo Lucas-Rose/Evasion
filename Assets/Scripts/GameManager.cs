@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject backText;
     private Text foregroundText;
     private Text backgroundText;
+    [SerializeField] private Text scoreText;
     [SerializeField] float score;
     [SerializeField] float startingScoreMultiplier;
     [SerializeField] float scoreMultiplierIncresase;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
             //near misses are a to-do down the line
             score += Time.deltaTime * scoreMultiplier;
             scoreCounter += Time.deltaTime;
+            scoreText.text = "Score: " + score.ToString();
             if(scoreCounter > scoreCounterThreshold)
             {
                 ScoreMultiplierIncrease();

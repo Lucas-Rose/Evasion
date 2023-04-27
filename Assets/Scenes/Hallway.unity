@@ -826,6 +826,8 @@ MonoBehaviour:
   damageAmount: 10
   hitCooldown: 1
   healAmount: 2
+  canTakeDamage: 0
+  currentTime: 0
 --- !u!1 &364340127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,7 +1298,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewindSound: {fileID: 482014968}
   music: {fileID: 424841332}
-  rewindAmount: 5
   rewindDuration: 2
 --- !u!4 &482014967
 Transform:
@@ -4530,6 +4531,7 @@ MonoBehaviour:
   - {x: 16, y: 10, z: 0, w: 15}
   - {x: 17, y: 10, z: 0, w: 16}
   - {x: 18, y: 10, z: 0, w: 17}
+  dispensable: 0
 --- !u!43 &1654034991
 Mesh:
   m_ObjectHideFlags: 0
@@ -10036,7 +10038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2032840684
 MonoBehaviour:
   m_ObjectHideFlags: 0

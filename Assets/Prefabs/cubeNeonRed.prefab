@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 8502318440139215126}
   - component: {fileID: -5026362206339239092}
   m_Layer: 0
-  m_Name: cubeNeon
-  m_TagString: Untagged
+  m_Name: cubeNeonRed
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

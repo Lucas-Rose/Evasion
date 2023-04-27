@@ -31,6 +31,7 @@ public class DispenserController : MonoBehaviour
     private List<ProjectileEvent> projectileEvents = new List<ProjectileEvent>();
     private List<GameObject> spawnPoints = new List<GameObject>();
     private List<float> projectileTimes = new List<float>();
+    [SerializeField] private bool dispensable;
 
     private float currentTime;
     private Transform projectileContainer;
@@ -68,7 +69,7 @@ public class DispenserController : MonoBehaviour
             }
         }
 
-        if (projectileEvents.Count > 0)
+        if (projectileEvents.Count > 0 && dispensable)
         { 
             if (currentTime > projectileEvents[0].getTime())
             {
@@ -172,5 +173,14 @@ public class DispenserController : MonoBehaviour
     public void ToggleMusic(bool state)
     {
         playingMusic = state;
+    }
+
+    public void SetTime(float val)
+    {
+        currentTime = val;
+    }
+    public void SetDispensable(bool state)
+    {
+        dispensable = state;
     }
 }

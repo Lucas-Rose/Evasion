@@ -22,4 +22,12 @@ public class ScoreManager : MonoBehaviour
         fText.text = score.ToString("f1");
         bText.text = score.ToString("f1");
     }
+    public void SetScore(float val)
+    {
+        score = val;
+    }
+    public float GetScore()
+    {
+        return score;
+    }
 }

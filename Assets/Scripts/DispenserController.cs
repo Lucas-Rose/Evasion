@@ -13,6 +13,8 @@ public class DispenserController : MonoBehaviour
     private float musicTime;
     private bool halfTime;
     public bool isSeated; //determined by player's initial input
+    public float widthSpacing; //tbd
+    public float heightSpacing; //tbd
 
 
     [Header("Dispenser Settings")]
@@ -84,7 +86,17 @@ public class DispenserController : MonoBehaviour
         {
             minProjSize = minSeatedProjSize; //assuming standing is the reccomended way to play
             maxProjSize = maxSeatedProjSize;
-            //dispenserWall = seatedDispenserWall; not sure which variable controls this 
+            widthSpacing = 2; // tbd
+            heightSpacing = 2; //tbd
+            //dispenserWall = seatedDispenserWall; not sure which variable controls this, could be following loop
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = -4; j < 4; j++)
+                {
+                    //Instantiate(spawnPointContainer, new Vector3(j * widthSpacing, i * heightSpacing, 0));
+                }
+
+            }
 
         }
     }

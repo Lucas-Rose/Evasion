@@ -12,15 +12,18 @@ public class DispenserController : MonoBehaviour
     private float timeBetweenBeats;
     private float musicTime;
     private bool halfTime;
+    public bool isSeated; //determined by player's initial input
 
 
-    [Header ("Dispenser Settings")]
+    [Header("Dispenser Settings")]
     [SerializeField] private float maxProjectileCount;
     [SerializeField] private GameObject spawnPointContainer;
 
-    [Header ("Projectile Settings")]
+    [Header("Projectile Settings")]
     [SerializeField] private float maxProjSize;
     [SerializeField] private float minProjSize;
+    [SerializeField] private float minSeatedProjSize; // new variable
+    [SerializeField] private float maxSeatedProjSize; // new variable
     [SerializeField] private GameObject timeProjectilePrefab;
     [SerializeField] private GameObject musicProjectilePrefab;
     [SerializeField] private Transform playerTransform;
@@ -41,7 +44,7 @@ public class DispenserController : MonoBehaviour
         projectileContainer = transform.GetChild(1);
         timeBetweenBeats = 1 / (bpm / 60f);
         musicTime = timeBetweenBeats;
-        for(int i = 0; i < spawnPointContainer.transform.childCount; i++)
+        for (int i = 0; i < spawnPointContainer.transform.childCount; i++)
         {
             spawnPoints.Add(spawnPointContainer.transform.GetChild(i).gameObject);
         }
@@ -56,13 +59,13 @@ public class DispenserController : MonoBehaviour
         musicTime -= Time.deltaTime;
         if (musicTime <= 0 && playingMusic)
         {
-            SpawnProjectile(false, beatProjSpeed, Random.Range(0,2) == 0, Random.Range(0, spawnPoints.Count));
+            SpawnProjectile(false, beatProjSpeed, Random.Range(0, 2) == 0, Random.Range(0, spawnPoints.Count));
             musicTime = timeBetweenBeats;
         }
 
-        if(musicCalendar.Count > 0)
+        if (musicCalendar.Count > 0)
         {
-            if(currentTime > musicCalendar[0].x)
+            if (currentTime > musicCalendar[0].x)
             {
                 parseMusicInfo(musicCalendar[0].y);
                 musicCalendar.RemoveAt(0);
@@ -70,17 +73,25 @@ public class DispenserController : MonoBehaviour
         }
 
         if (projectileEvents.Count > 0 && dispensable)
-        { 
+        {
             if (currentTime > projectileEvents[0].getTime())
             {
                 SpawnProjectile(true, projectileEvents[0].getSpeed(), projectileEvents[0].getTracking(), projectileEvents[0].getCannon());
             }
         }
+
+        if (isSeated) //new method
+        {
+            minProjSize = minSeatedProjSize; //assuming standing is the reccomended way to play
+            maxProjSize = maxSeatedProjSize;
+            //dispenserWall = seatedDispenserWall; not sure which variable controls this 
+
+        }
     }
 
     public void SpawnProjectile(bool custom, float speed, bool tracking, int cannon)
     {
-        if(cannon > spawnPoints.Count)
+        if (cannon > spawnPoints.Count)
         {
             cannon = spawnPoints.Count - 1;
         }
@@ -96,7 +107,7 @@ public class DispenserController : MonoBehaviour
         }
         Rigidbody rb = newProj.GetComponent<Rigidbody>();
         Vector3 dir;
-        if(!tracking)
+        if (!tracking)
         {
             dir = Vector3.back * speed;
         }
@@ -109,14 +120,14 @@ public class DispenserController : MonoBehaviour
         }
         rb.useGravity = false;
         rb.velocity = dir;
-        rb.angularVelocity = new Vector3(100f/Random.Range(1, 100), 100f/Random.Range(1, 100), 100f/Random.Range(1, 100));
+        rb.angularVelocity = new Vector3(100f / Random.Range(1, 100), 100f / Random.Range(1, 100), 100f / Random.Range(1, 100));
 
         if (custom)
         {
             projectileTimes.RemoveAt(0);
             projectileEvents.RemoveAt(0);
         }
-        if(projectileContainer.transform.childCount > maxProjectileCount)
+        if (projectileContainer.transform.childCount > maxProjectileCount)
         {
             Destroy(projectileContainer.transform.GetChild(0).gameObject);
         }
@@ -129,7 +140,7 @@ public class DispenserController : MonoBehaviour
             //x = time in sequence, y = speed, z = tracking ? 0 : 1, z = cannon
             projectileEvents.Add(ScriptableObject.CreateInstance<ProjectileEvent>().init(projectileEventInfo[i].x, projectileEventInfo[i].y, projectileEventInfo[i].z, projectileEventInfo[i].w));
         }
-        for(int i = 0; i < projectileEvents.Count; i++)
+        for (int i = 0; i < projectileEvents.Count; i++)
         {
             projectileTimes.Add(projectileEvents[i].getTime());
         }
@@ -159,12 +170,12 @@ public class DispenserController : MonoBehaviour
             ToggleMusic(true);
             Debug.Log("music on");
         }
-        if(val == 2)
+        if (val == 2)
         {
             SetHalfTime(true);
             Debug.Log("halftime on");
         }
-        if(val == 3)
+        if (val == 3)
         {
             SetHalfTime(false);
             Debug.Log("halfTime off");
@@ -183,4 +194,5 @@ public class DispenserController : MonoBehaviour
     {
         dispensable = state;
     }
+
 }

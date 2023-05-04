@@ -17,12 +17,7 @@ public class DispenserController : MonoBehaviour
     public float widthSpacing; //tbd
     public float heightSpacing; //tbd
 
-<<<<<<< Updated upstream
-
-    [Header("Dispenser Settings")]
-=======
     [Header ("Dispenser Settings")]
->>>>>>> Stashed changes
     [SerializeField] private float maxProjectileCount;
     [SerializeField] private GameObject spawnPointContainer;
     [SerializeField] private float seatedProjectileSize;
@@ -39,10 +34,6 @@ public class DispenserController : MonoBehaviour
 
 
     [Header("Projectile Settings")]
-    [SerializeField] private float maxProjSize;
-    [SerializeField] private float minProjSize;
-    [SerializeField] private float minSeatedProjSize; // new variable
-    [SerializeField] private float maxSeatedProjSize; // new variable
     [SerializeField] private GameObject timeProjectilePrefab;
     [SerializeField] private GameObject musicProjectilePrefab;
     private Transform playerTransform;
@@ -67,12 +58,9 @@ public class DispenserController : MonoBehaviour
         playingMusic = true; //Handling the rewind mechanic
         timeBetweenBeats = 1 / (bpm / 60f); //Music-based dispensing
         musicTime = timeBetweenBeats;
-<<<<<<< Updated upstream
-        for (int i = 0; i < spawnPointContainer.transform.childCount; i++)
-=======
 
-        gManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        seated = gManager.getSeated();
+        gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
+        seated = gManager.getSeated(); //Set via Canvas Interaction
         Vector3 container = spawnPointContainer.transform.position;
         if (seated)
         {
@@ -95,11 +83,6 @@ public class DispenserController : MonoBehaviour
                 }
             }
         }
-        for(int i = 0; i < spawnPointContainer.transform.childCount; i++)
->>>>>>> Stashed changes
-        {
-            spawnPoints.Add(spawnPointContainer.transform.GetChild(i).gameObject);
-        }
         CreateProjectileSequence();
     }
 
@@ -121,11 +104,7 @@ public class DispenserController : MonoBehaviour
         musicTime -= Time.deltaTime;
         if (musicTime <= 0 && playingMusic)
         {
-<<<<<<< Updated upstream
-            SpawnProjectile(false, beatProjSpeed, Random.Range(0, 2) == 0, Random.Range(0, spawnPoints.Count));
-=======
-            SpawnProjectile(false, beatProjSpeed, UnityEngine.Random.Range(0,2) == 0, UnityEngine.Random.Range(0, spawnPoints.Count));
->>>>>>> Stashed changes
+            SpawnProjectile(false, beatProjSpeed, UnityEngine.Random.Range(0, 2) == 0, UnityEngine.Random.Range(0, spawnPoints.Count));
             musicTime = timeBetweenBeats;
         }
 
@@ -144,24 +123,6 @@ public class DispenserController : MonoBehaviour
             {
                 SpawnProjectile(true, projectileEvents[0].getSpeed(), projectileEvents[0].getTracking(), projectileEvents[0].getCannon());
             }
-        }
-
-        if (isSeated) //new method
-        {
-            minProjSize = minSeatedProjSize; //assuming standing is the reccomended way to play
-            maxProjSize = maxSeatedProjSize;
-            widthSpacing = 2; // tbd
-            heightSpacing = 2; //tbd
-            //dispenserWall = seatedDispenserWall; not sure which variable controls this, could be following loop
-            for (int i = 0; i < 2; i++)
-            {
-                for (int j = -4; j < 4; j++)
-                {
-                    //Instantiate(spawnPointContainer, new Vector3(j * widthSpacing, i * heightSpacing, 0));
-                }
-
-            }
-
         }
     }
 
@@ -185,11 +146,14 @@ public class DispenserController : MonoBehaviour
         if (seated)
         {
             newProj.transform.localScale = new Vector3(seatedProjectileSize, seatedProjectileSize, seatedProjectileSize);
+            Debug.Log(newProj.transform.localScale.x);
         }
         else
         {
             newProj.transform.localScale = new Vector3(standingProjectileSize, standingProjectileSize, standingProjectileSize);
+            Debug.Log(newProj.transform.localScale.x);
         }
+
         Rigidbody rb = newProj.GetComponent<Rigidbody>();
         Vector3 dir;
         if (!tracking)
@@ -199,17 +163,13 @@ public class DispenserController : MonoBehaviour
         else
         {
             Vector3 dampTarget = new Vector3(playerTransform.position.x + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
-                playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
-                playerTransform.position.z + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp));
+            playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
+            playerTransform.position.z + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp));
             dir = (dampTarget - newProj.transform.position).normalized * speed;
         }
         rb.useGravity = false;
         rb.velocity = dir;
-<<<<<<< Updated upstream
-        rb.angularVelocity = new Vector3(100f / Random.Range(1, 100), 100f / Random.Range(1, 100), 100f / Random.Range(1, 100));
-=======
-        rb.angularVelocity = new Vector3(100f/ UnityEngine.Random.Range(1, 100), 100f/ UnityEngine.Random.Range(1, 100), 100f/ UnityEngine.Random.Range(1, 100));
->>>>>>> Stashed changes
+        rb.angularVelocity = new Vector3(100f / UnityEngine.Random.Range(1, 100), 100f / UnityEngine.Random.Range(1, 100), 100f / UnityEngine.Random.Range(1, 100));
 
         if (custom)
         {

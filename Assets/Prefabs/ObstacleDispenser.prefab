@@ -54,6 +54,9 @@ MonoBehaviour:
   - {x: 31, y: 0}
   - {x: 61, y: 1}
   - {x: 61, y: 3}
+  isSeated: 0
+  widthSpacing: 0
+  heightSpacing: 0
   maxProjectileCount: 18
   spawnPointContainer: {fileID: 200721166588368874}
   seatedProjectileSize: 0.4
@@ -66,8 +69,8 @@ MonoBehaviour:
   standingSpreadHeight: 2
   columns: 7
   rows: 2
-  maxProjSize: 1.2
-  minProjSize: 0.4
+  minSeatedProjSize: 0.4
+  maxSeatedProjSize: 0.6
   timeProjectilePrefab: {fileID: 8502318440139215113, guid: d5a8b7d9596aa0a499b17961c35022b1,
     type: 3}
   musicProjectilePrefab: {fileID: 8502318440139215113, guid: 9d49be292b7b1b1499b1f20a3f688055,

@@ -52,7 +52,6 @@ public class GameManager : MonoBehaviour
     {
         fParticleSystem = GameObject.Find("forwardParticleSystem");
         bParticleSystem = GameObject.Find("backwardParticleSystem");
-        projectileContainer = GameObject.Find("ProjectileContainer");
         checkPoint = GameObject.Find("checkPointCanvas").GetComponent<CheckPoint>();
         gameState = GameState.forward;
         rewindPoint = checkPoint.getLastCheckpoint();
@@ -152,7 +151,8 @@ public class GameManager : MonoBehaviour
         pHealth.SetHealthAnimator();
         pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
         scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
-        dController = GameObject.Find("ObstacleDispenser").GetComponent<DispenserController>();
+        dController = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<DispenserController>();
+        projectileContainer = GameObject.Find("ProjectileContainer");
         playing = true;
     }
     public void StartStanding()
@@ -164,7 +164,8 @@ public class GameManager : MonoBehaviour
         pHealth.SetHealthAnimator();
         pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
         scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
-        dController = GameObject.Find("ObstacleDispenser").GetComponent<DispenserController>();
+        dController = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<DispenserController>();
+        projectileContainer = GameObject.Find("ProjectileContainer");
         playing = true;
     }
 }

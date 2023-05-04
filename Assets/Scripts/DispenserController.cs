@@ -61,6 +61,7 @@ public class DispenserController : MonoBehaviour
 
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         seated = gManager.getSeated(); //Set via Canvas Interaction
+
         Vector3 container = spawnPointContainer.transform.position;
         if (seated)
         {

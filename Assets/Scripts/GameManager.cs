@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject projectileContainer;
 
+    private bool seated;
+
     private enum GameState { 
     rewinding,
     forward
@@ -106,5 +108,18 @@ public class GameManager : MonoBehaviour
             music.time = val;
             music.Play();
         }
+    }
+
+    public void setSeated(bool state)
+    {
+        seated = state;
+    }
+    public bool getSeated()
+    {
+        return seated;
+    }
+    public void displayTest()
+    {
+        Debug.Log("test");
     }
 }

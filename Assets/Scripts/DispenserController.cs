@@ -52,6 +52,7 @@ public class DispenserController : MonoBehaviour
     [SerializeField] private bool seated;
     void Start()
     {
+        GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
         Debug.Log(seated);
         projectileContainer = transform.GetChild(1); //Setting the transform for spawnpoints to instantiated within
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,23 +13,32 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource music;
     private float musicTime;
 
-
     [Header("Rewind Mechanics")]
     private float rewindPoint;
     [SerializeField] private float rewindDuration;
     private float currTime;
 
+    [Header("Particle Systems")]
     private GameObject fParticleSystem;
     private GameObject bParticleSystem;
 
+    [Header("Script References")]
     private CheckPoint checkPoint;
     private ProgressionManager pManager;
     private ScoreManager scoreManager;
     private DispenserController dController;
+    private PlayerHealth pHealth;
 
+    //Clean up runtime
     private GameObject projectileContainer;
 
+    [Header("UX Prefabs")]
+    [SerializeField] private GameObject scoreCanvas;
+    [SerializeField] private GameObject screenCanvas;
+    [SerializeField] private GameObject dispenser;
+
     private bool seated;
+    private bool playing;
 
     private enum GameState { 
     rewinding,
@@ -44,49 +54,60 @@ public class GameManager : MonoBehaviour
         bParticleSystem = GameObject.Find("backwardParticleSystem");
         projectileContainer = GameObject.Find("ProjectileContainer");
         checkPoint = GameObject.Find("checkPointCanvas").GetComponent<CheckPoint>();
-        pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
         gameState = GameState.forward;
-        scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
-        dController = GameObject.Find("ObstacleDispenser").GetComponent<DispenserController>();
         rewindPoint = checkPoint.getLastCheckpoint();
     }
 
     private void Update()
     {
-        if(music != null)
+        try
+        {
+            pHealth = GameObject.Find("Head").GetComponent<PlayerHealth>();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Head hasn't loaded yet");
+        }
+        
+        if (music != null)
         {
             musicTime = music.time;
         }
-
-        currTime -= Time.deltaTime;
-        switch (gameState) {
-            case (GameState.forward):
-                fParticleSystem.SetActive(true);
-                bParticleSystem.SetActive(false);
-                dController.SetDispensable(true);
-                break;
-            case (GameState.rewinding):
-                fParticleSystem.SetActive(false);
-                bParticleSystem.SetActive(true);
-                if(currTime < 0)
+            currTime -= Time.deltaTime;
+            switch (gameState)
+            {
+                case (GameState.forward):
+                    fParticleSystem.SetActive(true);
+                    bParticleSystem.SetActive(false);
+                if (playing)
                 {
-                    PlayMusicAt(rewindPoint);
-                    currTime = rewindDuration;
-                    gameState = GameState.forward;
+                    dController.SetDispensable(true);
+                }
                     break;
-                }
-                if (rewindSound != null && !rewindSound.isPlaying)
+                case (GameState.rewinding):
+                    fParticleSystem.SetActive(false);
+                    bParticleSystem.SetActive(true);
+                    if (currTime < 0)
+                    {
+                        PlayMusicAt(rewindPoint);
+                        currTime = rewindDuration;
+                        gameState = GameState.forward;
+                        break;
+                    }
+                    if (rewindSound != null && !rewindSound.isPlaying)
+                    {
+                        rewindSound.Play();
+                    }
+                    if (music != null)
+                    {
+                        music.Pause();
+                    }
+                if (playing)
                 {
-                    rewindSound.Play();
+                    dController.SetDispensable(false);
                 }
-                if(music != null)
-                {
-                    music.Pause();
-                }
-                dController.SetDispensable(false);
-                break;
-        }
-
+                    break;
+         }
     }
     public void Rewind()
     {
@@ -109,7 +130,6 @@ public class GameManager : MonoBehaviour
             music.Play();
         }
     }
-
     public void setSeated(bool state)
     {
         seated = state;
@@ -121,5 +141,30 @@ public class GameManager : MonoBehaviour
     public void displayTest()
     {
         Debug.Log("test");
+    }
+
+    public void StartSeated()
+    {
+        Instantiate(scoreCanvas);
+        Instantiate(screenCanvas);
+        Instantiate(dispenser);
+        setSeated(true);
+        pHealth.SetHealthAnimator();
+        pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
+        scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
+        dController = GameObject.Find("ObstacleDispenser").GetComponent<DispenserController>();
+        playing = true;
+    }
+    public void StartStanding()
+    {
+        Instantiate(scoreCanvas);
+        Instantiate(screenCanvas);
+        Instantiate(dispenser);
+        setSeated(false);
+        pHealth.SetHealthAnimator();
+        pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
+        scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
+        dController = GameObject.Find("ObstacleDispenser").GetComponent<DispenserController>();
+        playing = true;
     }
 }

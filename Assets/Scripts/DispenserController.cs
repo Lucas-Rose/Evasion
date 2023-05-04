@@ -187,7 +187,7 @@ public class DispenserController : MonoBehaviour
     {
         for (int i = 0; i < projectileEventInfo.Length; i++)
         {
-            //x = time in sequence, y = speed, z = tracking ? 0 : 1, z = cannon
+            //x = time in sequence, y = speed, z = tracking ? 0 : 1, w = cannon num (which spawn pos)
             projectileEvents.Add(ScriptableObject.CreateInstance<ProjectileEvent>().init(projectileEventInfo[i].x, projectileEventInfo[i].y, projectileEventInfo[i].z, projectileEventInfo[i].w));
         }
         for (int i = 0; i < projectileEvents.Count; i++)

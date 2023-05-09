@@ -4,40 +4,43 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 
 
+//
+
 public class BCurveProjectile : MonoBehaviour
 {
-    [SerializeField] private Vector3 origin;
+    private Vector3 origin;
     private Vector3 dest;
     [SerializeField] private float timeToDest = 2;
     private float curTime = 0;
-    private Rigidbody rb;
-    private float randomRange;
+    private float minMid;
+    private float maxMid;
     private bool init = false;
     private Vector3 midpoint;
+    private MeshRenderer render;
+    private Rigidbody rb;
 
     //NOTE: Noticing a bit of issue with the frame rate dips affecting the calculation of the curve
     //It's less noticible when the if the curve is shallow or if the projectlile travels at slower speed
     void Awake()
     {   
-        dest = new Vector3(0,0,10);
         rb = GetComponent<Rigidbody>();
-        origin = transform.position;
+        render = GetComponent<MeshRenderer>();
+        
         rb.angularVelocity = new Vector3(100f/Random.Range(1, 100), 100f/Random.Range(1, 100), 100f/Random.Range(1, 100));
     }
 
     void Start()
     {
+
     }
 
     void Update()
     {
-        //initiate values if haven't
-        if (!init)
-        {
-            midpoint = RandomXYSign((origin + dest)/2, 3f, 10f);
-            init = true;
-            Debug.Log(midpoint);
-        }
+        //Ignore, code for testing
+        // if (Input.GetKeyDown(KeyCode.Mouse0) && !init)
+        // {
+        //     Initiate(new Vector3(0,0,10), 3);
+        // }
     }
 
     //Fixedupdate for consistency of calculation
@@ -91,5 +94,26 @@ public class BCurveProjectile : MonoBehaviour
         int randomSign = Random.Range(0,2);
         float sign = ((float)randomSign - 0.5f) *2;
         return sign;
+    }
+
+    //Method needs to be called to render the cube
+    public void Initiate(Vector3 destination, float timeToDestination, float minRange, float maxRange)
+    {
+        //Set origin to instantiated position
+        origin = transform.position;
+        //Set destination
+        dest = destination;
+        //Set duration of travel
+        timeToDest = timeToDestination;
+
+        minMid = minRange;
+        maxMid = maxRange;
+
+        render.enabled = true;
+
+        //Randomize midpoint
+        midpoint = RandomXYSign((origin + dest)/2, minMid, maxMid);
+
+        init = true;
     }
 }

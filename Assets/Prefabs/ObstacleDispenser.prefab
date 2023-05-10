@@ -59,10 +59,10 @@ MonoBehaviour:
   columns: 5
   rows: 3
   projectiles:
-  - {fileID: 8502318440139215113, guid: d5a8b7d9596aa0a499b17961c35022b1, type: 3}
   - {fileID: 8502318440139215113, guid: 9d49be292b7b1b1499b1f20a3f688055, type: 3}
-  trackAccuracyDamp: 0.5
-  projectileSpeed: 3
+  - {fileID: 8502318440139215113, guid: d5a8b7d9596aa0a499b17961c35022b1, type: 3}
+  trackAccuracyDamp: 0
+  projectileSpeed: 6
 --- !u!95 &8031932764856768345
 Animator:
   serializedVersion: 3

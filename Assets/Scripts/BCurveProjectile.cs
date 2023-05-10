@@ -12,8 +12,9 @@ public class BCurveProjectile : MonoBehaviour
     private Vector3 dest;
     [SerializeField] private float timeToDest = 2;
     private float curTime = 0;
-    private float minMid;
-    private float maxMid;
+    //Default value
+    [SerializeField] private float minMid = 2;
+    [SerializeField] private float maxMid = 5;
     private bool init = false;
     private Vector3 midpoint;
     private MeshRenderer render;
@@ -37,10 +38,10 @@ public class BCurveProjectile : MonoBehaviour
     void Update()
     {
         //Ignore, code for testing
-        // if (Input.GetKeyDown(KeyCode.Mouse0) && !init)
-        // {
-        //     Initiate(new Vector3(0,0,10), 3);
-        // }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !init)
+        {
+            Initiate(new Vector3(0,0,10), 3, 3, 6);
+        }
     }
 
     //Fixedupdate for consistency of calculation
@@ -82,9 +83,14 @@ public class BCurveProjectile : MonoBehaviour
 
     //Randomize x,y of vector3 but in the form of a hollowed square
     //Purpose: to make sure midpoints arcs aren't too small to be noticed while still being able to random in all directions
-    //Use positive numbers only
+    //Use positive numbers
     private Vector3 RandomXYSign(Vector3 point, float min, float max)
     {
+        //only positive numbers would work
+        //if min is higher than max, random range should swap them automatically, i think
+        min = Mathf.Abs(min);
+        max = Mathf.Abs(max);
+
         return point = new Vector3(point.x + RandomSign() * Random.Range(min, max), point.y + RandomSign() * Random.Range(min, max), point.z);
     }
 
@@ -96,7 +102,7 @@ public class BCurveProjectile : MonoBehaviour
         return sign;
     }
 
-    //Method needs to be called to render the cube
+    //Method needs to be called to render and initiate the cube
     public void Initiate(Vector3 destination, float timeToDestination, float minRange, float maxRange)
     {
         //Set origin to instantiated position

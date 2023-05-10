@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    [Header ("CheckPoints")]
     [SerializeField] private List<float> checkPointTimes;
-    private float currentTime;
+
+    [Header("CheckPoint Info")]
+    private float lastCheckPointTime;
+    private int lastCheckPointIndex;
+
+    [Header("References")]
     private Animator anim;
-    private float lastCheckPoint;
+    private GameManager gManager;
+
+    private float currentTime;
+    
     private void Start()
     {
         anim = GetComponent<Animator>();
+        gManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -21,15 +31,25 @@ public class CheckPoint : MonoBehaviour
         {
             if (currentTime > checkPointTimes[0])
             {
-                lastCheckPoint = checkPointTimes[0];
-                checkPointTimes.RemoveAt(0);
-                anim.SetTrigger("checkpoint");
+                HitCheckPoint();
             }
         }
     }
 
-    public float getLastCheckpoint()
+    public float getLastCheckpointTime()
     {
-        return lastCheckPoint;
+        return lastCheckPointTime;
+    }
+    public int getLastCheckPointIndex()
+    {
+        return lastCheckPointIndex;
+    }
+
+    public void HitCheckPoint()
+    {
+        lastCheckPointTime = checkPointTimes[0];
+        lastCheckPointIndex++;
+        checkPointTimes.RemoveAt(0);
+        anim.SetTrigger("checkpoint");
     }
 }

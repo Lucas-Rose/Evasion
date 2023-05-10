@@ -6,12 +6,9 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-
-
-    [Header ("Audio")]
+    [Header("Audio")]
     [SerializeField] private AudioSource rewindSound;
     [SerializeField] private AudioSource music;
-    private float musicTime;
 
     [Header("Rewind Mechanics")]
     private float rewindPoint;
@@ -26,8 +23,8 @@ public class GameManager : MonoBehaviour
     private CheckPoint checkPoint;
     private ProgressionManager pManager;
     private ScoreManager scoreManager;
-    private DispenserController dController;
     private PlayerHealth pHealth;
+    private Animator dAnimator;
 
     //Clean up runtime
     private GameObject projectileContainer;
@@ -36,94 +33,67 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject scoreCanvas;
     [SerializeField] private GameObject screenCanvas;
     [SerializeField] private GameObject dispenser;
+    [SerializeField] private GameObject checkPointCanvas;
 
     private bool seated;
-    private bool playing;
 
-    private enum GameState { 
-    rewinding,
-    forward
+    private enum GameState
+    {
+        rewinding,
+        forward
     }
 
     private GameState gameState;
-
 
     private void Start()
     {
         fParticleSystem = GameObject.Find("forwardParticleSystem");
         bParticleSystem = GameObject.Find("backwardParticleSystem");
-        checkPoint = GameObject.Find("checkPointCanvas").GetComponent<CheckPoint>();
         gameState = GameState.forward;
-        rewindPoint = checkPoint.getLastCheckpoint();
     }
 
     private void Update()
-    {
-        try
+    { 
+        currTime -= Time.deltaTime;
+        switch (gameState)
         {
-            pHealth = GameObject.Find("Head").GetComponent<PlayerHealth>();
-        }
-        catch (Exception e)
-        {
-            Debug.Log("Head hasn't loaded yet");
-        }
-        
-        if (music != null)
-        {
-            musicTime = music.time;
-        }
-            currTime -= Time.deltaTime;
-            switch (gameState)
-            {
-                case (GameState.forward):
-                    fParticleSystem.SetActive(true);
-                    bParticleSystem.SetActive(false);
-                if (playing)
+            case (GameState.forward):
+                fParticleSystem.SetActive(true);
+                bParticleSystem.SetActive(false);
+                break;
+            case (GameState.rewinding):
+                fParticleSystem.SetActive(false);
+                bParticleSystem.SetActive(true);
+                if (currTime < 0)
                 {
-                    dController.SetDispensable(true);
-                }
+                    PlayMusicAt(checkPoint.getLastCheckpointTime());
+                    currTime = rewindDuration;
+                    dAnimator.SetTrigger("Section" + (checkPoint.getLastCheckPointIndex() + 1));
+                    gameState = GameState.forward;
                     break;
-                case (GameState.rewinding):
-                    fParticleSystem.SetActive(false);
-                    bParticleSystem.SetActive(true);
-                    if (currTime < 0)
-                    {
-                        PlayMusicAt(rewindPoint);
-                        currTime = rewindDuration;
-                        gameState = GameState.forward;
-                        break;
-                    }
-                    if (rewindSound != null && !rewindSound.isPlaying)
-                    {
-                        rewindSound.Play();
-                    }
-                    if (music != null)
-                    {
-                        music.Pause();
-                    }
-                if (playing)
+                }
+                if (!rewindSound.isPlaying)
                 {
-                    dController.SetDispensable(false);
+                    rewindSound.Play();
+                    music.Pause();
                 }
-                    break;
-         }
+                break;
+        }
     }
     public void Rewind()
     {
         currTime = rewindDuration;
         gameState = GameState.rewinding;
-        for(int i = 0; i < projectileContainer.transform.childCount; i++)
-        {
-            Destroy(projectileContainer.transform.GetChild(i).gameObject);
-        }
-        pManager.SetProgress(checkPoint.getLastCheckpoint());
+
+        DestroyAllProjectiles();
+
+        pManager.SetProgress(checkPoint.getLastCheckpointTime());
         scoreManager.SetScore(scoreManager.GetScore() - 10);
-        dController.SetTime(rewindPoint);
     }
 
     public void PlayMusicAt(float val)
     {
-        if(music != null)
+        if (music != null)
         {
             music.time = val;
             music.Play();
@@ -137,35 +107,43 @@ public class GameManager : MonoBehaviour
     {
         return seated;
     }
-    public void displayTest()
-    {
-        Debug.Log("test");
-    }
 
     public void StartSeated()
     {
-        Instantiate(scoreCanvas);
-        Instantiate(screenCanvas);
-        Instantiate(dispenser);
+        CreateSystems();
         setSeated(true);
-        pHealth.SetHealthAnimator();
-        pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
-        scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
-        dController = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<DispenserController>();
-        projectileContainer = GameObject.Find("ProjectileContainer");
-        playing = true;
+        LinkSystems();
     }
     public void StartStanding()
+    {
+        CreateSystems();
+        setSeated(false);
+        LinkSystems();
+    }
+
+    public void DestroyAllProjectiles()
+    {
+        for (int i = 0; i < projectileContainer.transform.childCount; i++)
+        {
+            Destroy(projectileContainer.transform.GetChild(i).gameObject);
+        }
+    }
+    
+    public void CreateSystems()
     {
         Instantiate(scoreCanvas);
         Instantiate(screenCanvas);
         Instantiate(dispenser);
-        setSeated(false);
+        Instantiate(checkPointCanvas);
+    }
+    public void LinkSystems()
+    {
+        pHealth = GameObject.Find("Head").GetComponent<PlayerHealth>();
         pHealth.SetHealthAnimator();
         pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
         scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
-        dController = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<DispenserController>();
         projectileContainer = GameObject.Find("ProjectileContainer");
-        playing = true;
+        dAnimator = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<Animator>();
+        checkPoint = GameObject.Find("checkPointCanvas(Clone)").GetComponent<CheckPoint>();
     }
 }

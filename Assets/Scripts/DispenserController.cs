@@ -4,19 +4,7 @@ using UnityEngine;
 using System;
 
 public class DispenserController : MonoBehaviour
-{
-    [Header("Music Settings")]
-    [SerializeField] private float bpm;
-    [SerializeField] private float beatProjSpeed;
-    [SerializeField] private List<Vector2> musicCalendar;
-    private bool playingMusic;
-    private float timeBetweenBeats;
-    private float musicTime;
-    private bool halfTime;
-    public bool isSeated; //determined by player's initial input
-    public float widthSpacing; //tbd
-    public float heightSpacing; //tbd
-
+{ 
     [Header ("Dispenser Settings")]
     [SerializeField] private float maxProjectileCount;
     [SerializeField] private GameObject spawnPointContainer;
@@ -32,45 +20,45 @@ public class DispenserController : MonoBehaviour
     [SerializeField] private int columns;
     [SerializeField] private int rows;
 
-
     [Header("Projectile Settings")]
-    [SerializeField] private GameObject timeProjectilePrefab;
-    [SerializeField] private GameObject musicProjectilePrefab;
     private Transform playerTransform;
+    [SerializeField] private GameObject[] projectiles;
     [SerializeField] private float trackAccuracyDamp;
+    [SerializeField] private float projectileSpeed;
 
     [Header("Custom Dispense Sequence")]
-    [SerializeField] private Vector4[] projectileEventInfo;
-    private List<ProjectileEvent> projectileEvents = new List<ProjectileEvent>();
     private List<GameObject> spawnPoints = new List<GameObject>();
-    private List<float> projectileTimes = new List<float>();
-    [SerializeField] private bool dispensable;
 
-    private float currentTime;
     private Transform projectileContainer;
     private GameManager gManager;
-    [SerializeField] private bool seated;
+    private bool seated;
+
     void Start()
     {
         GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
-        Debug.Log(seated);
         projectileContainer = transform.GetChild(1); //Setting the transform for spawnpoints to instantiated within
 
-        playingMusic = true; //Handling the rewind mechanic
-        timeBetweenBeats = 1 / (bpm / 60f); //Music-based dispensing
-        musicTime = timeBetweenBeats;
+        playerTransform = GameObject.Find("Head").GetComponent<Transform>();
 
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         seated = gManager.getSeated(); //Set via Canvas Interaction
 
+        GenerateSpawnPoints();
+
+        TopRowTracking();
+    }
+    public void GenerateSpawnPoints()
+    {
         Vector3 container = spawnPointContainer.transform.position;
         if (seated)
         {
-            for (int i = 0; i < rows; i ++)
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < columns; j ++)
+                for (int j = 0; j < columns; j++)
                 {
-                    spawnPoints.Add(Instantiate(spawnPoint, new Vector3((-columns/2)*seatedSpreadWidth + (j * seatedSpreadWidth), (seatedSpreadHeight / 2) + (i * seatedSpreadHeight), container.z), Quaternion.identity, spawnPointContainer.transform));
+                    spawnPoints.Add(Instantiate(spawnPoint, new Vector3(container.x + (-columns / 2) * seatedSpreadWidth + (j * seatedSpreadWidth),
+                                                                            container.y + (seatedSpreadHeight / 2) + (i * seatedSpreadHeight), 
+                                                                                container.z), Quaternion.identity, spawnPointContainer.transform));
                 }
             }
         }
@@ -80,170 +68,133 @@ public class DispenserController : MonoBehaviour
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    
-                    spawnPoints.Add(Instantiate(spawnPoint, new Vector3((-columns / 2)*standingSpreadWidth + (j * standingSpreadWidth), 1 + (standingSpreadHeight / 2) + (i * standingSpreadHeight), container.z), Quaternion.identity, spawnPointContainer.transform));
+
+                    spawnPoints.Add(Instantiate(spawnPoint, new Vector3(container.x + (-columns / 2) * standingSpreadWidth + (j * standingSpreadWidth),
+                                                                            container.y + 1 + (standingSpreadHeight / 2) + (i * standingSpreadHeight), 
+                                                                                container.z), Quaternion.identity, spawnPointContainer.transform));
                 }
             }
         }
-        CreateProjectileSequence();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SingleTracking(int cannon)
     {
-        currentTime += Time.deltaTime;
-        if(playerTransform == null)
-        {
-            try
-            {
-                playerTransform = GameObject.Find("Head").GetComponent<Transform>();
-            }
-            catch(Exception e) 
-            {
-                Debug.Log("Head hasn't loaded yet");
-            }
-        }
-        musicTime -= Time.deltaTime;
-        if (musicTime <= 0 && playingMusic)
-        {
-            SpawnProjectile(false, beatProjSpeed, UnityEngine.Random.Range(0, 2) == 0, UnityEngine.Random.Range(0, spawnPoints.Count));
-            musicTime = timeBetweenBeats;
-        }
+        SpawnProjectile(cannon, true);
+    }
+    public void SingleStraight(int cannon)
+    {
+        SpawnProjectile(cannon, false);
+    }
 
-        if (musicCalendar.Count > 0)
+    public void BottomRowStraight()
+    {
+        for(int i = 0; i < columns; i++)
         {
-            if (currentTime > musicCalendar[0].x)
-            {
-                parseMusicInfo(musicCalendar[0].y);
-                musicCalendar.RemoveAt(0);
-            }
-        }
-
-        if (projectileEvents.Count > 0 && dispensable)
-        {
-            if (currentTime > projectileEvents[0].getTime())
-            {
-                SpawnProjectile(true, projectileEvents[0].getSpeed(), projectileEvents[0].getTracking(), projectileEvents[0].getCannon());
-            }
+            SpawnProjectile(i, false);
         }
     }
 
-    public void SpawnProjectile(bool custom, float speed, bool tracking, int cannon)
+    public void TopRowStraight()
+    {
+        for (int i = rows*columns-1; i >= rows * columns - columns; i--)
+        {
+            SpawnProjectile(i, false);
+        }
+    }
+
+    public void TopRowTracking()
+    {
+        for (int i = rows * columns - 1; i >= rows * columns - columns; i--)
+        {
+            SpawnProjectile(i, true);
+        }
+    }
+
+    public void BottomRowTracking()
+    {
+        for (int i = 0; i < columns; i++)
+        {
+            SpawnProjectile(i, true);
+        }
+    }
+    
+    public void RandomSingleTracking()
+    {
+        int cannon = UnityEngine.Random.Range(0, spawnPoints.Count);
+        SpawnProjectile(cannon, true);
+    }
+
+    public void RandomSingleStraight()
+    {
+        int cannon = UnityEngine.Random.Range(0, spawnPoints.Count);
+        SpawnProjectile(cannon, false);
+    }
+
+    //Randomly selects 'amount' of spawnpoints and produces tracking/straight projectiles
+    public void BunchTracking(int amount)
+    {
+        for(int i = 0; i < amount; i++)
+        {
+            int cannonNumber = UnityEngine.Random.Range(0, spawnPoints.Count);
+            SpawnProjectile(cannonNumber, true);
+        }
+    }
+    public void BunchStraight(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            int cannonNumber = UnityEngine.Random.Range(0, spawnPoints.Count);
+            SpawnProjectile(cannonNumber, false);
+        }
+    }
+
+    public void SpawnProjectile(int cannon, bool tracking)
     {
         if (cannon > spawnPoints.Count)
         {
             cannon = spawnPoints.Count - 1;
         }
-        GameObject newProj = null;
 
-        if (custom)
-        {
-            newProj = Instantiate(timeProjectilePrefab, spawnPoints[cannon].transform.position, Quaternion.identity, projectileContainer);
-        }
-        else
-        {
-            newProj = Instantiate(musicProjectilePrefab, spawnPoints[cannon].transform.position, Quaternion.identity, projectileContainer);
-        }
 
+        //Make Projectile
+        GameObject prefab = projectiles[UnityEngine.Random.Range(0, projectiles.Length)];
+        GameObject newProj = Instantiate(prefab, spawnPoints[cannon].transform.position, Quaternion.identity, projectileContainer);
+
+        //Scale
         if (seated)
         {
             newProj.transform.localScale = new Vector3(seatedProjectileSize, seatedProjectileSize, seatedProjectileSize);
-            Debug.Log(newProj.transform.localScale.x);
         }
         else
         {
             newProj.transform.localScale = new Vector3(standingProjectileSize, standingProjectileSize, standingProjectileSize);
-            Debug.Log(newProj.transform.localScale.x);
         }
 
+        //Give Direction
         Rigidbody rb = newProj.GetComponent<Rigidbody>();
         Vector3 dir;
         if (!tracking)
         {
-            dir = Vector3.back * speed;
+            dir = Vector3.back * projectileSpeed;
         }
         else
         {
             Vector3 dampTarget = new Vector3(playerTransform.position.x + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
-            playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
-            playerTransform.position.z + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp));
-            dir = (dampTarget - newProj.transform.position).normalized * speed;
+                                                playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
+                                                    playerTransform.position.z + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp));
+
+            dir = (dampTarget - newProj.transform.position).normalized * projectileSpeed;
         }
         rb.useGravity = false;
         rb.velocity = dir;
+
+        //Random Rotation
         rb.angularVelocity = new Vector3(100f / UnityEngine.Random.Range(1, 100), 100f / UnityEngine.Random.Range(1, 100), 100f / UnityEngine.Random.Range(1, 100));
 
-        if (custom)
-        {
-            projectileTimes.RemoveAt(0);
-            projectileEvents.RemoveAt(0);
-        }
+        //Cleanup
         if (projectileContainer.transform.childCount > maxProjectileCount)
         {
             Destroy(projectileContainer.transform.GetChild(0).gameObject);
         }
     }
-
-    public void CreateProjectileSequence()
-    {
-        for (int i = 0; i < projectileEventInfo.Length; i++)
-        {
-            //x = time in sequence, y = speed, z = tracking ? 0 : 1, w = cannon num (which spawn pos)
-            projectileEvents.Add(ScriptableObject.CreateInstance<ProjectileEvent>().init(projectileEventInfo[i].x, projectileEventInfo[i].y, projectileEventInfo[i].z, projectileEventInfo[i].w));
-        }
-        for (int i = 0; i < projectileEvents.Count; i++)
-        {
-            projectileTimes.Add(projectileEvents[i].getTime());
-        }
-    }
-    public void SetHalfTime(bool state)
-    {
-        halfTime = state;
-        if (halfTime)
-        {
-            timeBetweenBeats *= 2;
-        }
-        else
-        {
-            timeBetweenBeats /= 2;
-        }
-        musicTime = 0;
-    }
-    public void parseMusicInfo(float val)
-    {
-        if (val == 0)
-        {
-            ToggleMusic(false);
-            Debug.Log("music off");
-        }
-        if (val == 1)
-        {
-            ToggleMusic(true);
-            Debug.Log("music on");
-        }
-        if (val == 2)
-        {
-            SetHalfTime(true);
-            Debug.Log("halftime on");
-        }
-        if (val == 3)
-        {
-            SetHalfTime(false);
-            Debug.Log("halfTime off");
-        }
-    }
-    public void ToggleMusic(bool state)
-    {
-        playingMusic = state;
-    }
-
-    public void SetTime(float val)
-    {
-        currentTime = val;
-    }
-    public void SetDispensable(bool state)
-    {
-        dispensable = state;
-    }
-
 }

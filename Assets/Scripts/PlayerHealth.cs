@@ -26,7 +26,6 @@ public class PlayerHealth : MonoBehaviour
         currentTime = hitCooldown;
         currentHealth = maxHealth;
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        healthAnimator = GameObject.Find("screenCanvas").GetComponent<Animator>();
     }
 
     private void Update()
@@ -45,7 +44,6 @@ public class PlayerHealth : MonoBehaviour
         {
             //healDamage(healAmount * Time.deltaTime);
         }
-        
     }
 
     public void takeDamage(float damage)
@@ -78,5 +76,9 @@ public class PlayerHealth : MonoBehaviour
             takeDamage(damageAmount);
             Debug.Log("hit");
         }
+    }
+    public void SetHealthAnimator()
+    {
+        healthAnimator = GameObject.Find("screenCanvas(Clone)").GetComponent<Animator>();
     }
 }    

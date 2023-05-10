@@ -20,8 +20,6 @@ public class BCurveProjectile : MonoBehaviour
     private MeshRenderer render;
     private Rigidbody rb;
 
-    //NOTE: Noticing a bit of issue with the frame rate dips affecting the calculation of the curve
-    //It's less noticible when the if the curve is shallow or if the projectlile travels at slower speed
     void Awake()
     {   
         rb = GetComponent<Rigidbody>();
@@ -38,10 +36,10 @@ public class BCurveProjectile : MonoBehaviour
     void Update()
     {
         //Ignore, code for testing
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !init)
-        {
-            Initiate(new Vector3(0,0,10), 3, 3, 6);
-        }
+        // if (Input.GetKeyDown(KeyCode.Mouse0) && !init)
+        // {
+        //     Initiate(new Vector3(0,0,10), 3, 3, 6);
+        // }
     }
 
     //Fixedupdate for consistency of calculation
@@ -66,7 +64,7 @@ public class BCurveProjectile : MonoBehaviour
         Debug.Log(p1);
         //t calculation
         float t = curTime/timeToDest;
-
+        //curve calc
         Vector3 lerp1 = Vector3.Lerp(p0, p1, t);
         Vector3 lerp2 = Vector3.Lerp(p1, p2, t);
         Vector3 targetP = Vector3.Lerp(lerp1,lerp2, t);
@@ -102,7 +100,8 @@ public class BCurveProjectile : MonoBehaviour
         return sign;
     }
 
-    //Method needs to be called to render and initiate the cube
+    //Method needs to be called to enable render and initiate the cube
+    //minRange/maxRange refers to the random range of midpoint, use positive numebrs, see RandomXYSign for detail
     public void Initiate(Vector3 destination, float timeToDestination, float minRange, float maxRange)
     {
         //Set origin to instantiated position

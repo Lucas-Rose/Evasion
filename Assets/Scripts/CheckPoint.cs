@@ -52,4 +52,8 @@ public class CheckPoint : MonoBehaviour
         checkPointTimes.RemoveAt(0);
         anim.SetTrigger("checkpoint");
     }
+    public void SetCurrentTime(float val)
+    {
+        currentTime = val;
+    }
 }

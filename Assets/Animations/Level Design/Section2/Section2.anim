@@ -87,7 +87,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 13.066667
-    functionName: RandomSingleStraight
+    functionName: RandomSingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -101,7 +101,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 16.9
-    functionName: RandomSingleStraight
+    functionName: BottomRowTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -115,7 +115,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 20.733334
-    functionName: RandomSingleStraight
+    functionName: RandomSingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

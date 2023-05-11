@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxProjectileCount: 40
   spawnPointContainer: {fileID: 200721166588368874}
-  seatedProjectileSize: 0.4
+  seatedProjectileSize: 0.3
   standingProjectileSize: 0.6
   spawnPoint: {fileID: 6812598002597202526, guid: 5c8f448ae9f0c17438cd9a13e01ce4b0,
     type: 3}

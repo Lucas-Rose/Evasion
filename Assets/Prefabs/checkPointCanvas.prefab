@@ -329,6 +329,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkPointTimes:
   - 30
-  - 60
+  - 58.4
   - 90
   - 120

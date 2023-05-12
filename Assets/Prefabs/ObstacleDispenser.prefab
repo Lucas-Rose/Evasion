@@ -61,7 +61,8 @@ MonoBehaviour:
   projectiles:
   - {fileID: 8502318440139215113, guid: 9d49be292b7b1b1499b1f20a3f688055, type: 3}
   - {fileID: 8502318440139215113, guid: d5a8b7d9596aa0a499b17961c35022b1, type: 3}
-  trackAccuracyDamp: 0
+  - {fileID: 8502318440139215113, guid: fbad690fe34c0c54e9fc16c74f1b043c, type: 3}
+  trackAccuracyDamp: 1
   projectileSpeed: 6
 --- !u!95 &8031932764856768345
 Animator:

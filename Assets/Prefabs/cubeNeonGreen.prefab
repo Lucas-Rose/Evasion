@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8502318440139215126}
   - component: {fileID: -5026362206339239092}
   m_Layer: 0
-  m_Name: cubeNeonYellow
+  m_Name: cubeNeonGreen
   m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81793643eb3e15d4b9becc195ba41cc8, type: 2}
+  - {fileID: 2100000, guid: a3ff7609c03fc2848b3c3c954af05ca2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

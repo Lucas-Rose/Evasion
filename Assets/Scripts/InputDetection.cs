@@ -18,7 +18,7 @@ public class InputDetection : MonoBehaviour
 
     private void Update()
     {
-        var device = VRDevice.Device;
+        /*var device = VRDevice.Device;
         if (device != null)
         {
             if (device.GetButtonDown(VRButton.Primary))
@@ -31,7 +31,7 @@ public class InputDetection : MonoBehaviour
                 anim.SetTrigger("fade");
                 gManager.StartStanding();
             }
-        }
+        }*/
     }
 
     //List of Available Controls
@@ -66,5 +66,19 @@ public class InputDetection : MonoBehaviour
     public void End()
     {
         ExperienceApp.End();
+    }
+    public void DestroyMe()
+    {
+        Destroy(this.gameObject);
+    }
+    public void PlayStanding()
+    {
+        gManager.StartStanding();
+        anim.SetTrigger("fade");
+    }
+    public void PlaySeated()
+    {
+        gManager.StartSeated();
+        anim.SetTrigger("fade");
     }
 }

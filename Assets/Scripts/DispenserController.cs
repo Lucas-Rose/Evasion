@@ -45,7 +45,7 @@ public class DispenserController : MonoBehaviour
 
         GenerateSpawnPoints();
 
-        TopRowTracking();
+        //TopRowTracking();
     }
     public void GenerateSpawnPoints()
     {

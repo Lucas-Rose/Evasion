@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
         DestroyAllProjectiles();
 
         pManager.SetProgress(checkPoint.getLastCheckpointTime());
-        checkPoint.SetCurrentTime(getLastCheckpointTime);
+        checkPoint.SetCurrentTime(checkPoint.getLastCheckpointTime());
         scoreManager.SetScore(scoreManager.GetScore() - 10);
     }
 

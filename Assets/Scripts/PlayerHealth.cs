@@ -44,6 +44,11 @@ public class PlayerHealth : MonoBehaviour
         {
             //healDamage(healAmount * Time.deltaTime);
         }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            gManager.Rewind();
+        } 
     }
 
     public void takeDamage(float damage)

@@ -52,8 +52,8 @@ MonoBehaviour:
   standingProjectileSize: 0.2
   spawnPoint: {fileID: 6812598002597202526, guid: 5c8f448ae9f0c17438cd9a13e01ce4b0,
     type: 3}
-  seatedSpreadWidth: 1
-  seatedSpreadHeight: 1
+  seatedSpreadWidth: 0.4
+  seatedSpreadHeight: 0.4
   standingSpreadWidth: 1
   standingSpreadHeight: 1
   columns: 5

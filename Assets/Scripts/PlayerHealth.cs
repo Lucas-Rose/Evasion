@@ -11,7 +11,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float damageAmount;
     [SerializeField] private float hitCooldown;
     [SerializeField] private float healAmount;
-    private float currentHealth;
+    [SerializeField] private float currentHealth;
     [SerializeField] private bool canTakeDamage;
     [SerializeField] private float currentTime;
 

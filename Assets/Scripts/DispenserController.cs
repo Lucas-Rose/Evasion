@@ -13,10 +13,10 @@ public class DispenserController : MonoBehaviour
 
     [Header("Spread Settings")]
     [SerializeField] private GameObject spawnPoint;
-    [SerializeField] private int seatedSpreadWidth;
-    [SerializeField] private int seatedSpreadHeight;
-    [SerializeField] private int standingSpreadWidth;
-    [SerializeField] private int standingSpreadHeight;
+    [SerializeField] private float seatedSpreadWidth;
+    [SerializeField] private float seatedSpreadHeight;
+    [SerializeField] private float standingSpreadWidth;
+    [SerializeField] private float standingSpreadHeight;
     [SerializeField] private int columns;
     [SerializeField] private int rows;
 
@@ -38,7 +38,7 @@ public class DispenserController : MonoBehaviour
         GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
         projectileContainer = transform.GetChild(1); //Setting the transform for spawnpoints to instantiated within
 
-        playerTransform = GameObject.Find("Head").GetComponent<Transform>();
+        playerTransform = GameObject.Find("CenterEye").GetComponent<Transform>();
 
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         seated = gManager.getSeated(); //Set via Canvas Interaction

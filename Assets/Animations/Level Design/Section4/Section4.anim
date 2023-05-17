@@ -31,7 +31,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 38.5
+    m_StopTime: 29.516666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -350,6 +350,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
+    intParameter: 4
+    messageOptions: 0
+  - time: 19.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
     intParameter: 10
     messageOptions: 0
   - time: 19.5
@@ -358,13 +365,6 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 7
-    messageOptions: 0
-  - time: 19.5
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 4
     messageOptions: 0
   - time: 20.5
     functionName: SingleStraight
@@ -469,13 +469,6 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 7
-    messageOptions: 0
-  - time: 24.5
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
     intParameter: 5
     messageOptions: 0
   - time: 24.5
@@ -499,6 +492,20 @@ AnimationClip:
     floatParameter: 0
     intParameter: 6
     messageOptions: 0
+  - time: 24.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 25.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 14
+    messageOptions: 0
   - time: 25.5
     functionName: SingleStraight
     data: 
@@ -513,15 +520,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 7
     messageOptions: 0
-  - time: 25.5
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 14
-    messageOptions: 0
-  - time: 38.5
-    functionName: BottomRowStraight
+  - time: 29.516666
+    functionName: RandomSingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

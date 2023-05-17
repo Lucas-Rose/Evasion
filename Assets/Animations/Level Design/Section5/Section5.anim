@@ -31,7 +31,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 40.666668
+    m_StopTime: 55.066666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -207,6 +207,13 @@ AnimationClip:
     messageOptions: 0
   - time: 40.666668
     functionName: RandomSingleTracking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 55.066666
+    functionName: TopRowStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

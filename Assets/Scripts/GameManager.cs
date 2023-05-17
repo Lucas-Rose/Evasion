@@ -6,14 +6,20 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Time")]
+    [SerializeField] private float endTime;
+    private float totalTime;
+    private bool playing;
+
     [Header("Audio")]
     [SerializeField] private AudioSource rewindSound;
     [SerializeField] private AudioSource music;
+    [SerializeField] private AudioSource menuMusic;
 
     [Header("Rewind Mechanics")]
-    private float rewindPoint;
     [SerializeField] private float rewindDuration;
     private float currTime;
+    
 
     [Header("Particle Systems")]
     private GameObject fParticleSystem;
@@ -34,6 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject screenCanvas;
     [SerializeField] private GameObject dispenser;
     [SerializeField] private GameObject checkPointCanvas;
+    [SerializeField] private GameObject completeCanvas;
 
     private bool seated;
 
@@ -50,10 +57,20 @@ public class GameManager : MonoBehaviour
         fParticleSystem = GameObject.Find("forwardParticleSystem");
         bParticleSystem = GameObject.Find("backwardParticleSystem");
         gameState = GameState.forward;
+        totalTime = 0;
+        playing = false;
     }
 
     private void Update()
-    { 
+    {
+        if (playing)
+        {
+            totalTime += Time.deltaTime;
+        }
+        if(totalTime > endTime && GameObject.Find("CompleteCanvas(Clone)") == null) 
+        {
+            Instantiate(completeCanvas);
+        }
         currTime -= Time.deltaTime;
         switch (gameState)
         {
@@ -67,6 +84,7 @@ public class GameManager : MonoBehaviour
                 if (currTime < 0)
                 {
                     PlayMusicAt(checkPoint.getLastCheckpointTime());
+                    totalTime = checkPoint.getLastCheckpointTime();
                     currTime = rewindDuration;
                     dAnimator.SetTrigger("Section" + (checkPoint.getLastCheckPointIndex() + 1));
                     gameState = GameState.forward;
@@ -150,6 +168,8 @@ public class GameManager : MonoBehaviour
         Instantiate(screenCanvas);
         Instantiate(dispenser);
         Instantiate(checkPointCanvas);
+        playing = true;
+        menuMusic.Stop();
     }
     public void LinkSystems()
     {

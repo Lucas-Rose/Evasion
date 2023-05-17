@@ -13,14 +13,12 @@ public class CheckPoint : MonoBehaviour
 
     [Header("References")]
     private Animator anim;
-    private GameManager gManager;
 
     private float currentTime;
     
     private void Start()
     {
         anim = GetComponent<Animator>();
-        gManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

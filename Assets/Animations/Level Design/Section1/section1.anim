@@ -73,14 +73,14 @@ AnimationClip:
     intParameter: 2
     messageOptions: 0
   - time: 14.716666
-    functionName: BottomRowStraight
+    functionName: TopRowStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 14.716666
-    functionName: TopRowStraight
+    functionName: BottomRowStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -154,14 +154,14 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 12
+    intParameter: 7
     messageOptions: 0
   - time: 24.25
     functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 7
+    intParameter: 12
     messageOptions: 0
   - time: 24.25
     functionName: SingleStraight
@@ -175,14 +175,14 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 10
     messageOptions: 0
   - time: 25.25
     functionName: SingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 10
+    intParameter: 0
     messageOptions: 0
   - time: 30
     functionName: BottomRowStraight

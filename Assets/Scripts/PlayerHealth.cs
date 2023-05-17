@@ -44,6 +44,16 @@ public class PlayerHealth : MonoBehaviour
         {
             //healDamage(healAmount * Time.deltaTime);
         }
+
+        // manual rewind + skip 
+        // if(Input.GetKeyDown(KeyCode.R))
+        // {
+        //     gManager.Rewind();
+        // } 
+        // if(Input.GetKeyDown(KeyCode.Z))
+        // {
+        //     gManager.SkipToSix();
+        // } 
     }
 
     public void takeDamage(float damage)

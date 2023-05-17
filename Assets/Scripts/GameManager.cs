@@ -91,6 +91,20 @@ public class GameManager : MonoBehaviour
         checkPoint.SetCurrentTime(checkPoint.getLastCheckpointTime());
         scoreManager.SetScore(scoreManager.GetScore() - 10);
     }
+    
+    // forbiddencode
+    // public void SkipToSix()
+    // {
+    //     currTime = rewindDuration;
+    //     gameState = GameState.rewinding;
+
+    //     DestroyAllProjectiles();
+
+    //     checkPoint.setSection6();
+    //     pManager.SetProgress(checkPoint.getLastCheckpointTime());
+    //     checkPoint.SetCurrentTime(checkPoint.getLastCheckpointTime());
+    //     scoreManager.SetScore(scoreManager.GetScore() - 10);
+    // }
 
     public void PlayMusicAt(float val)
     {

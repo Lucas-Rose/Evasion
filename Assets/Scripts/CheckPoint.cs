@@ -56,4 +56,11 @@ public class CheckPoint : MonoBehaviour
     {
         currentTime = val;
     }
+
+    // forbidden code
+    // public void setSection6()
+    // {
+    //     lastCheckPointTime = 170;
+    //     lastCheckPointIndex = 5;
+    // }
 }

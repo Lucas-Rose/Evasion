@@ -24,7 +24,13 @@ public class DispenserController : MonoBehaviour
     private Transform playerTransform;
     [SerializeField] private GameObject[] projectiles;
     [SerializeField] private float trackAccuracyDamp;
-    [SerializeField] private float projectileSpeed;
+    [SerializeField] public float projectileSpeed;
+    public float section1Speed;
+    public float section2Speed;
+    public float section3Speed;
+    public float section4Speed;
+    public float section5Speed;
+    public float section6Speed;
 
     [Header("Custom Dispense Sequence")]
     private List<GameObject> spawnPoints = new List<GameObject>();
@@ -42,6 +48,8 @@ public class DispenserController : MonoBehaviour
 
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         seated = gManager.getSeated(); //Set via Canvas Interaction
+
+        projectileSpeed = section1Speed;
 
         GenerateSpawnPoints();
 

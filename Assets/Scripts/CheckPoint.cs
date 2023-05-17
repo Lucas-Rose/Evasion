@@ -15,10 +15,14 @@ public class CheckPoint : MonoBehaviour
     private Animator anim;
 
     private float currentTime;
+    public GameObject dispenser;
+    private DispenserController dController;
+    private int counter = 1;
     
     private void Start()
     {
         anim = GetComponent<Animator>();
+        dController = dispenser.GetComponent<DispenserController>();
     }
 
     // Update is called once per frame
@@ -49,6 +53,28 @@ public class CheckPoint : MonoBehaviour
         lastCheckPointIndex++;
         checkPointTimes.RemoveAt(0);
         anim.SetTrigger("checkpoint");
+        counter++;
+        switch(counter)
+        {
+            case 2:
+                dController.projectileSpeed = dController.section2Speed;
+                break;
+            case 3:
+                dController.projectileSpeed = dController.section3Speed;
+                break;
+            case 4:
+                dController.projectileSpeed = dController.section4Speed;
+                break;
+            case 5:
+                dController.projectileSpeed = dController.section5Speed;
+                break;
+            case 6:
+                dController.projectileSpeed = dController.section6Speed;
+                break;
+            default:
+                dController.projectileSpeed = dController.section1Speed;
+                break;
+        }
     }
     public void SetCurrentTime(float val)
     {

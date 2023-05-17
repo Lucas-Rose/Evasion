@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200721166293857175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 15}
+  m_LocalPosition: {x: 0, y: 1.6, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 200721166588368875}
@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxProjectileCount: 40
   spawnPointContainer: {fileID: 200721166588368874}
-  seatedProjectileSize: 0.3
-  standingProjectileSize: 0.6
+  seatedProjectileSize: 0.1
+  standingProjectileSize: 0.2
   spawnPoint: {fileID: 6812598002597202526, guid: 5c8f448ae9f0c17438cd9a13e01ce4b0,
     type: 3}
   seatedSpreadWidth: 1

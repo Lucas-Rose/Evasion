@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
     }
     public void LinkSystems()
     {
-        pHealth = GameObject.Find("CenterEye").GetComponent<PlayerHealth>();
+        pHealth = GameObject.Find("PlayerHitbox").GetComponent<PlayerHealth>();
         pHealth.SetHealthAnimator();
         pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
         scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();

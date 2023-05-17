@@ -54,8 +54,8 @@ MonoBehaviour:
     type: 3}
   seatedSpreadWidth: 0.4
   seatedSpreadHeight: 0.4
-  standingSpreadWidth: 1
-  standingSpreadHeight: 1
+  standingSpreadWidth: 0.8
+  standingSpreadHeight: 0.8
   columns: 5
   rows: 3
   projectiles:

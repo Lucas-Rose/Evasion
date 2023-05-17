@@ -38,7 +38,7 @@ public class DispenserController : MonoBehaviour
         GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
         projectileContainer = transform.GetChild(1); //Setting the transform for spawnpoints to instantiated within
 
-        playerTransform = GameObject.Find("CenterEye").GetComponent<Transform>();
+        playerTransform = GameObject.Find("Head").GetComponent<Transform>();
 
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         seated = gManager.getSeated(); //Set via Canvas Interaction

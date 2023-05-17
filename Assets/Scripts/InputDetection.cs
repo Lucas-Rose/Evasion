@@ -9,11 +9,14 @@ public class InputDetection : MonoBehaviour
 {
     private Animator anim;
     private GameManager gManager;
+    public GameObject pHitbox;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        pHitbox.GetComponent<Collider>().enabled = false;
+
     }
 
     private void Update()
@@ -75,10 +78,15 @@ public class InputDetection : MonoBehaviour
     {
         gManager.StartStanding();
         anim.SetTrigger("fade");
+
+        pHitbox.GetComponent<Collider>().enabled = true;
+        
     }
     public void PlaySeated()
     {
         gManager.StartSeated();
         anim.SetTrigger("fade");
+
+        pHitbox.GetComponent<Collider>().enabled = true;
     }
 }

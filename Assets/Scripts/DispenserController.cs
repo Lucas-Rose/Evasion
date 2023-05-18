@@ -39,8 +39,9 @@ public class DispenserController : MonoBehaviour
     private GameManager gManager;
     private bool seated;
 
-    private GameObject playerHead;
-    [SerializeField] private float startElevation;
+    //private GameObject playerHead;
+    //[SerializeField] private float startElevation;
+    
    
 
     void Start()
@@ -49,7 +50,7 @@ public class DispenserController : MonoBehaviour
         projectileContainer = transform.GetChild(1); //Setting the transform for spawnpoints to instantiated within
 
         playerTransform = GameObject.Find("PlayerHitbox").GetComponent<Transform>();
-        playerHead = GameObject.Find("CenterEye");
+        //playerHead = GameObject.Find("CenterEye");
         
 
 
@@ -59,8 +60,8 @@ public class DispenserController : MonoBehaviour
 
         projectileSpeed = section1Speed;
 
-        startElevation = playerHead.transform.position.y;
-        gameObject.transform.position = new Vector3(0, startElevation - 0f, 15f);
+        //startElevation = playerHead.transform.position.y;
+        //gameObject.transform.position = new Vector3(0, startElevation - 0f, 15f);
 
 
         GenerateSpawnPoints();

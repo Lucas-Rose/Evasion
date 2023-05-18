@@ -11,6 +11,9 @@ public class PositionPlayer : MonoBehaviour
     //public Transform playerHead;
 
     private GameObject dispenser;
+
+    public GameObject gaze;
+    public GameObject reticle;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +33,8 @@ public class PositionPlayer : MonoBehaviour
         startElevation = playerHead.transform.position.y;
         dispenser = GameObject.Find("ObstacleDispenser(Clone)");
         dispenser.transform.position = new Vector3(0, startElevation - .5f, 15);
+        gaze.SetActive(false);
+        reticle.SetActive(false);
     }
 
     public void CalibrateStanding()
@@ -40,5 +45,7 @@ public class PositionPlayer : MonoBehaviour
         startElevation = playerHead.transform.position.y;
         dispenser = GameObject.Find("ObstacleDispenser(Clone)");
         dispenser.transform.position = new Vector3(0, startElevation - 2f, 15);
+        gaze.SetActive(false);
+        reticle.SetActive(false);
     }
 }

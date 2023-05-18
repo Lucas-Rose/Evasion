@@ -39,17 +39,29 @@ public class DispenserController : MonoBehaviour
     private GameManager gManager;
     private bool seated;
 
+    private GameObject playerHead;
+    [SerializeField] private float startElevation;
+   
+
     void Start()
     {
         GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
         projectileContainer = transform.GetChild(1); //Setting the transform for spawnpoints to instantiated within
 
         playerTransform = GameObject.Find("PlayerHitbox").GetComponent<Transform>();
+        playerHead = GameObject.Find("CenterEye");
+        
+
+
 
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         seated = gManager.getSeated(); //Set via Canvas Interaction
 
         projectileSpeed = section1Speed;
+
+        startElevation = playerHead.transform.position.y;
+        gameObject.transform.position = new Vector3(0, startElevation - 0f, 15f);
+
 
         GenerateSpawnPoints();
 
@@ -57,6 +69,8 @@ public class DispenserController : MonoBehaviour
     }
     public void GenerateSpawnPoints()
     {
+
+
         Vector3 container = spawnPointContainer.transform.position;
         if (seated)
         {

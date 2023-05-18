@@ -333,3 +333,5 @@ MonoBehaviour:
   - 90
   - 115
   - 170
+  dispenser: {fileID: 200721166293857175, guid: 2e289807383086f49a927be435b1ce4a,
+    type: 3}

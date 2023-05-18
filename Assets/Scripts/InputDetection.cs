@@ -10,12 +10,15 @@ public class InputDetection : MonoBehaviour
     private Animator anim;
     private GameManager gManager;
     public GameObject pHitbox;
+    public GameObject vrController;
+    private PositionPlayer pPosition;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         pHitbox.GetComponent<Collider>().enabled = false;
+        pPosition = vrController.GetComponent<PositionPlayer>();
 
     }
 
@@ -80,6 +83,7 @@ public class InputDetection : MonoBehaviour
         anim.SetTrigger("fade");
 
         pHitbox.GetComponent<Collider>().enabled = true;
+        pPosition.Calibrate();
         
     }
     public void PlaySeated()
@@ -88,5 +92,6 @@ public class InputDetection : MonoBehaviour
         anim.SetTrigger("fade");
 
         pHitbox.GetComponent<Collider>().enabled = true;
+        pPosition.Calibrate();
     }
 }

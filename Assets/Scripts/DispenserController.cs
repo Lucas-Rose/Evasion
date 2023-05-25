@@ -202,8 +202,8 @@ public class DispenserController : MonoBehaviour
         }
         else
         {
-            Vector3 dampTarget = new Vector3(playerTransform.position.x + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
-                                                playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp -.5f, trackAccuracyDamp -.5f),
+            Vector3 dampTarget = new Vector3(playerTransform.position.x + UnityEngine.Random.Range(-trackAccuracyDamp -.15f, trackAccuracyDamp -.15f),
+                                                playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp -.9f, trackAccuracyDamp -.9f),
                                                     playerTransform.position.z + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp));
 
             dir = (dampTarget - newProj.transform.position).normalized * projectileSpeed;

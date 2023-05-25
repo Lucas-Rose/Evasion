@@ -49,7 +49,7 @@ MonoBehaviour:
   maxProjectileCount: 40
   spawnPointContainer: {fileID: 200721166588368874}
   seatedProjectileSize: 0.1
-  standingProjectileSize: 0.225
+  standingProjectileSize: 0.175
   spawnPoint: {fileID: 6812598002597202526, guid: 5c8f448ae9f0c17438cd9a13e01ce4b0,
     type: 3}
   seatedSpreadWidth: 0.4
@@ -62,7 +62,7 @@ MonoBehaviour:
   - {fileID: 8502318440139215113, guid: 9d49be292b7b1b1499b1f20a3f688055, type: 3}
   - {fileID: 8502318440139215113, guid: d5a8b7d9596aa0a499b17961c35022b1, type: 3}
   - {fileID: 8502318440139215113, guid: fbad690fe34c0c54e9fc16c74f1b043c, type: 3}
-  trackAccuracyDamp: 0
+  trackAccuracyDamp: 0.4
   projectileSpeed: 22
   section1Speed: 8
   section2Speed: 12

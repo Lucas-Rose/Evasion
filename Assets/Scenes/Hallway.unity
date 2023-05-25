@@ -1338,6 +1338,7 @@ MonoBehaviour:
     type: 3}
   completeCanvas: {fileID: 5426877782458912283, guid: e87bd752d5ea5f444b2733c7a6007c91,
     type: 3}
+  camera: {fileID: 1731210029}
 --- !u!4 &482014967
 Transform:
   m_ObjectHideFlags: 0
@@ -1758,7 +1759,7 @@ MonoBehaviour:
   hitCooldown: 0.2
   healAmount: 0
   currentHealth: 0
-  canTakeDamage: 0
+  canTakeDamage: 1
   currentTime: 0
 --- !u!65 &609370505
 BoxCollider:
@@ -1848,6 +1849,21 @@ PrefabInstance:
     - target: {fileID: 1260162968516261969, guid: 22276a8657744e04cba8ad0a2caf4195,
         type: 3}
       propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260162968516261968, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_Tracking.MatchPosition
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260162968516261968, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_Tracking.MatchActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260162968516261968, guid: 22276a8657744e04cba8ad0a2caf4195,
+        type: 3}
+      propertyPath: m_UsePerEyeCameras
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1260162970322627868, guid: 22276a8657744e04cba8ad0a2caf4195,

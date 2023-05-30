@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: section1
+  m_Name: section1-copy
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -52,7 +52,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 1
@@ -72,15 +72,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 10.05
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 14.716666
-    functionName: TopRowTracking
+    functionName: TopRowStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -101,14 +94,14 @@ AnimationClip:
     intParameter: 9
     messageOptions: 0
   - time: 16.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 5
     messageOptions: 0
   - time: 17.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -129,49 +122,49 @@ AnimationClip:
     intParameter: 10
     messageOptions: 0
   - time: 20.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 8
     messageOptions: 0
   - time: 21.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 6
     messageOptions: 0
   - time: 22.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 12
     messageOptions: 0
   - time: 23.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
   - time: 24.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 7
     messageOptions: 0
   - time: 24.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 12
     messageOptions: 0
   - time: 24.25
-    functionName: SingleTracking
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -192,7 +185,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 30
-    functionName: BottomRowTracking
+    functionName: BottomRowStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

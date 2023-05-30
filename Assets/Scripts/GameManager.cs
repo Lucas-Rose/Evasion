@@ -38,9 +38,11 @@ public class GameManager : MonoBehaviour
     [Header("UX Prefabs")]
     [SerializeField] private GameObject scoreCanvas;
     [SerializeField] private GameObject screenCanvas;
+    private GameObject activeScreen;
     [SerializeField] private GameObject dispenser;
     [SerializeField] private GameObject checkPointCanvas;
     [SerializeField] private GameObject completeCanvas;
+    [SerializeField] private Camera camera;
 
     private bool seated;
 
@@ -165,7 +167,7 @@ public class GameManager : MonoBehaviour
     public void CreateSystems()
     {
         Instantiate(scoreCanvas);
-        Instantiate(screenCanvas);
+        activeScreen = Instantiate(screenCanvas);
         Instantiate(dispenser);
         Instantiate(checkPointCanvas);
         playing = true;
@@ -180,5 +182,9 @@ public class GameManager : MonoBehaviour
         projectileContainer = GameObject.Find("ProjectileContainer");
         dAnimator = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<Animator>();
         checkPoint = GameObject.Find("checkPointCanvas(Clone)").GetComponent<CheckPoint>();
+        activeScreen.GetComponent<Canvas>().worldCamera = camera;
+        Debug.Log(activeScreen.GetComponent<Canvas>().worldCamera);
+        activeScreen.GetComponent<Canvas>().planeDistance = .5f;
+        Debug.Log(activeScreen.GetComponent<Canvas>().planeDistance);
     }
 }

@@ -83,7 +83,7 @@ public class InputDetection : MonoBehaviour
         anim.SetTrigger("fade");
 
         pHitbox.GetComponent<Collider>().enabled = true;
-        pPosition.Calibrate();
+        pPosition.CalibrateStanding();
         
     }
     public void PlaySeated()
@@ -92,6 +92,6 @@ public class InputDetection : MonoBehaviour
         anim.SetTrigger("fade");
 
         pHitbox.GetComponent<Collider>().enabled = true;
-        pPosition.Calibrate();
+        pPosition.CalibrateSeated();
     }
 }

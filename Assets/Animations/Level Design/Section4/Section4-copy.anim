@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Section6
+  m_Name: Section4-copy
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -31,7 +31,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 59.733334
+    m_StopTime: 25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -51,469 +51,455 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 2
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 1
-    intParameter: 7
-    messageOptions: 0
-  - time: 3.4833333
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 12
-    messageOptions: 0
-  - time: 4
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 24
-    messageOptions: 0
-  - time: 4.9666667
-    functionName: TopRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 5.95
+  - time: 2.6666667
     functionName: BottomRowStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 6.9333334
-    functionName: BunchTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 3
-    messageOptions: 0
-  - time: 7.9166665
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 12
-    messageOptions: 0
-  - time: 7.9166665
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 7
-    messageOptions: 0
-  - time: 7.9166665
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 2
-    messageOptions: 0
-  - time: 8.65
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 3
-    messageOptions: 0
-  - time: 9.483334
-    functionName: BottomRowStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 5
-    messageOptions: 0
-  - time: 10.466666
-    functionName: TopRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 11.383333
-    functionName: BottomRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 12.466666
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 12
-    messageOptions: 0
-  - time: 12.466666
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 7
-    messageOptions: 0
-  - time: 12.466666
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 2
-    messageOptions: 0
-  - time: 13.466666
-    functionName: TopRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 14.45
-    functionName: BottomRowStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 8
-    messageOptions: 0
-  - time: 15.416667
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 4
-    messageOptions: 0
-  - time: 17.25
+  - time: 3.3333333
     functionName: SingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 9
     messageOptions: 0
-  - time: 18.25
-    functionName: TopRowTracking
+  - time: 4
+    functionName: SingleTracking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 14
+    messageOptions: 0
+  - time: 5
+    functionName: TopRowStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 5.5
+    functionName: SingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 5
     messageOptions: 0
-  - time: 19.25
+  - time: 6
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 12
+    messageOptions: 0
+  - time: 6
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 6
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 6.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 8
+    messageOptions: 0
+  - time: 7
+    functionName: BunchStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
+  - time: 8
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 4
+    messageOptions: 0
+  - time: 8.5
+    functionName: SingleTracking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 4
+    messageOptions: 0
+  - time: 9
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 6
+    messageOptions: 0
+  - time: 9
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 11
+    messageOptions: 0
+  - time: 9
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 1
+    messageOptions: 0
+  - time: 9.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 13
+    messageOptions: 0
+  - time: 10
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
+  - time: 10.5
+    functionName: SingleTracking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 14
+    messageOptions: 0
+  - time: 11
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 9
+    messageOptions: 0
+  - time: 11
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 8
+    messageOptions: 0
+  - time: 11
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 11
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 5
+    messageOptions: 0
+  - time: 11
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 6
+    messageOptions: 0
+  - time: 11.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 6
+    messageOptions: 0
+  - time: 11.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 13
+    messageOptions: 0
+  - time: 11.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 12
     functionName: SingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 7
     messageOptions: 0
-  - time: 20.25
-    functionName: BottomRowTracking
+  - time: 12.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 14
+    intParameter: 4
     messageOptions: 0
-  - time: 21.25
-    functionName: TopRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 10
-    messageOptions: 0
-  - time: 22.25
-    functionName: SingleTracking
+  - time: 12.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 8
     messageOptions: 0
-  - time: 23.25
-    functionName: BottomRowTracking
+  - time: 12.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 12
+    messageOptions: 0
+  - time: 13
+    functionName: SingleTracking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 13.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 6
     messageOptions: 0
-  - time: 24.233334
+  - time: 13.5
     functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 12
-    messageOptions: 0
-  - time: 25.2
-    functionName: SingleStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 4
-    messageOptions: 0
-  - time: 26.166666
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 27.133333
-    functionName: BunchStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 4
-    messageOptions: 0
-  - time: 28.1
-    functionName: SingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 10
     messageOptions: 0
-  - time: 29.133333
+  - time: 13.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
+  - time: 14
     functionName: SingleTracking
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 14.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 14
+    messageOptions: 0
+  - time: 14.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 8
+    messageOptions: 0
+  - time: 14.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 15
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 30.1
+  - time: 18.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 2
+    messageOptions: 0
+  - time: 18.5
     functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 12
     messageOptions: 0
-  - time: 31.133333
-    functionName: TopRowTracking
+  - time: 18.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 19.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 4
+    messageOptions: 0
+  - time: 19.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 10
+    messageOptions: 0
+  - time: 19.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 20.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 8
+    messageOptions: 0
+  - time: 20.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 5
+    messageOptions: 0
+  - time: 20.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 9
+    messageOptions: 0
+  - time: 20.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 7
+    messageOptions: 0
+  - time: 20.5
+    functionName: SingleStraight
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 6
+    messageOptions: 0
+  - time: 21.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 32
-    functionName: SingleTracking
+  - time: 21.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 7
     messageOptions: 0
-  - time: 32.866665
-    functionName: RandomSingleTracking
+  - time: 21.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 14
     messageOptions: 0
-  - time: 33.733334
-    functionName: RandomSingleTracking
+  - time: 22.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 12
     messageOptions: 0
-  - time: 34.6
-    functionName: RandomSingleTracking
+  - time: 22.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 7
     messageOptions: 0
-  - time: 35.466667
-    functionName: BunchTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 3
-    messageOptions: 0
-  - time: 36.333332
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 37.2
-    functionName: TopRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 38.066666
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 38.933334
-    functionName: BunchTracking
+  - time: 22.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 39.8
-    functionName: RandomSingleTracking
+  - time: 23.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 10
     messageOptions: 0
-  - time: 40.666668
-    functionName: TopRowTracking
+  - time: 23.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 7
     messageOptions: 0
-  - time: 41.533333
-    functionName: RandomSingleTracking
+  - time: 23.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 4
     messageOptions: 0
-  - time: 42.4
-    functionName: RandomSingleTracking
+  - time: 24.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 5
     messageOptions: 0
-  - time: 43.266666
-    functionName: RandomSingleTracking
+  - time: 24.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 8
     messageOptions: 0
-  - time: 44.133335
-    functionName: TopRowTracking
+  - time: 24.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 9
     messageOptions: 0
-  - time: 45
-    functionName: RandomSingleTracking
+  - time: 24.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 0
+    intParameter: 6
     messageOptions: 0
-  - time: 45.866665
-    functionName: BunchTracking
+  - time: 24.5
+    functionName: SingleStraight
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 3
+    intParameter: 7
     messageOptions: 0
-  - time: 46.733334
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 47.6
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 48.433334
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 49.333332
-    functionName: BottomRowStraight
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 50.2
-    functionName: TopRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 51.066666
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 51.933334
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 52.8
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 53.666668
-    functionName: SingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 2
-    messageOptions: 0
-  - time: 54.533333
-    functionName: BottomRowTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 55.4
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 56.266666
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 57.133335
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 58
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 58.866665
-    functionName: RandomSingleTracking
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 59.733334
+  - time: 25
     functionName: RandomSingleTracking
     data: 
     objectReferenceParameter: {fileID: 0}

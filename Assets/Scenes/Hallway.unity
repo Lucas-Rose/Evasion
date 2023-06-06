@@ -1247,8 +1247,7 @@ MonoBehaviour:
   music: {fileID: 424841332}
   menuMusic: {fileID: 482014969}
   rewindDuration: 2
-  scoreCanvas: {fileID: 994141929935372374, guid: 8e5539b528c1f544eb898a613cc8b880,
-    type: 3}
+  scoreCanvas: {fileID: 0}
   screenCanvas: {fileID: 3911041658956119540, guid: 2629272ba8205c940a1e1b3044ec4dbd,
     type: 3}
   dispenser: {fileID: 200721166293857175, guid: 2e289807383086f49a927be435b1ce4a,

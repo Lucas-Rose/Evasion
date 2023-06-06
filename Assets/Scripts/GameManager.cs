@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
 
         pManager.SetProgress(checkPoint.getLastCheckpointTime());
         checkPoint.SetCurrentTime(checkPoint.getLastCheckpointTime());
-        scoreManager.SetScore(scoreManager.GetScore() - 10);
+        //scoreManager.SetScore(scoreManager.GetScore() - 10);
     }
     
     // forbiddencode
@@ -166,7 +166,7 @@ public class GameManager : MonoBehaviour
     
     public void CreateSystems()
     {
-        Instantiate(scoreCanvas);
+        //Instantiate(scoreCanvas);
         activeScreen = Instantiate(screenCanvas);
         Instantiate(dispenser);
         Instantiate(checkPointCanvas);
@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
         pHealth = GameObject.Find("PlayerHitbox").GetComponent<PlayerHealth>();
         pHealth.SetHealthAnimator();
         pManager = GameObject.Find("ProgressionBar").GetComponent<ProgressionManager>();
-        scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
+        //scoreManager = GameObject.Find("Score").GetComponent<ScoreManager>();
         projectileContainer = GameObject.Find("ProjectileContainer");
         dAnimator = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<Animator>();
         checkPoint = GameObject.Find("checkPointCanvas(Clone)").GetComponent<CheckPoint>();

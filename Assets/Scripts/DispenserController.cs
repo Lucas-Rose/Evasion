@@ -23,6 +23,7 @@ public class DispenserController : MonoBehaviour
     [Header("Projectile Settings")]
     private Transform playerTransform;
     [SerializeField] private GameObject[] projectiles;
+    [SerializeField] private GameObject block;
     [SerializeField] private float trackAccuracyDamp;
     [SerializeField] public float projectileSpeed;
     public float section1Speed;
@@ -41,6 +42,9 @@ public class DispenserController : MonoBehaviour
 
     private GameObject playerHead;
     [SerializeField] private float startElevation;
+    //block/wall stuff
+    private Vector3 blockPos;
+    private Quaternion blockRot;
    
 
     void Start()
@@ -170,6 +174,13 @@ public class DispenserController : MonoBehaviour
         }
     }
 
+//Since Unity only allows one input for animation events anything specific requires a custom function to be made here.
+//xPos, yPos, xRot, yRot, zRot, xScale, yScale, zScale, speedMod. passing an AnimationEvent function is required to use multiple.
+    public void BlockFullWallFlat(float yScale)
+    {
+        spawnBlock(0, 0, 0, 0, 0, 20, yScale, 3, 0);
+    }
+
     public void SpawnProjectile(int cannon, bool tracking)
     {
         if (cannon > spawnPoints.Count)
@@ -218,5 +229,29 @@ public class DispenserController : MonoBehaviour
         {
             Destroy(projectileContainer.transform.GetChild(0).gameObject);
         }
+    }
+
+//different shapes can use a similar method. This one is for 'walls' and big blocks that take up large parts of the screen.
+//This is basically a simplified version of the above method with more data entries for specificity. Most can be left empty for most shapes.
+//speedMod is a modifier that makes it possible to spawn blocks that are faster or slower than a section's norm by speedMod.
+    public void spawnBlock(float xPos, float yPos, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale, float speedMod)
+    {
+        //to set positions not tied to canons. This is more environmental and at this point not designed to function with seated play.
+        blockPos = new Vector3(xPos, yPos, 15);
+        //To create shapes such as beams, split angles, etc. Can slant.
+        blockRot = Quaternion.Euler(xRot, yRot, zRot);
+        GameObject newBlock = Instantiate(block, blockPos, transform.rotation * blockRot);
+        newBlock.transform.localScale = new Vector3(xPos, yPos, 15);
+
+        Rigidbody rb = newBlock.GetComponent<Rigidbody>();
+        Vector3 dir;
+        Vector3 target = new Vector3(transform.position.x, transform.position.y, transform.position.z - 30);
+
+        dir = (target - newBlock.transform.position).normalized * (projectileSpeed + speedMod);
+
+        rb.useGravity = false;
+        rb.velocity = dir;
+
+        //remember to add clean up
     }
 }

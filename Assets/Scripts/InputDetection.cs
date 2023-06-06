@@ -9,17 +9,11 @@ public class InputDetection : MonoBehaviour
 {
     private Animator anim;
     private GameManager gManager;
-    public GameObject pHitbox;
-    public GameObject vrController;
-    private PositionPlayer pPosition;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        pHitbox.GetComponent<Collider>().enabled = false;
-        pPosition = vrController.GetComponent<PositionPlayer>();
-
     }
 
     private void Update()
@@ -81,17 +75,10 @@ public class InputDetection : MonoBehaviour
     {
         gManager.StartStanding();
         anim.SetTrigger("fade");
-
-        pHitbox.GetComponent<Collider>().enabled = true;
-        pPosition.CalibrateStanding();
-        
     }
     public void PlaySeated()
     {
         gManager.StartSeated();
         anim.SetTrigger("fade");
-
-        pHitbox.GetComponent<Collider>().enabled = true;
-        pPosition.CalibrateSeated();
     }
 }

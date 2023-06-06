@@ -241,7 +241,7 @@ public class DispenserController : MonoBehaviour
         //To create shapes such as beams, split angles, etc. Can slant.
         blockRot = Quaternion.Euler(xRot, yRot, zRot);
         GameObject newBlock = Instantiate(block, blockPos, transform.rotation * blockRot);
-        newBlock.transform.localScale = new Vector3(xPos, yPos, 15);
+        newBlock.transform.localScale = new Vector3(xScale, yScale, zScale);
 
         Rigidbody rb = newBlock.GetComponent<Rigidbody>();
         Vector3 dir;

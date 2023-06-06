@@ -38,35 +38,20 @@ public class DispenserController : MonoBehaviour
     private Transform projectileContainer;
     private GameManager gManager;
     private bool seated;
-
-    //private GameObject playerHead;
-    //[SerializeField] private float startElevation;
-    
-   
-
+  
     void Start()
     {
         GameObject.Find("AudioManager").GetComponent<AudioSource>().Play();
         projectileContainer = transform.GetChild(1); //Setting the transform for spawnpoints to instantiated within
 
         playerTransform = GameObject.Find("PlayerHitbox").GetComponent<Transform>();
-        //playerHead = GameObject.Find("CenterEye");
         
-
-
-
         gManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
         seated = gManager.getSeated(); //Set via Canvas Interaction
 
         projectileSpeed = section1Speed;
 
-        //startElevation = playerHead.transform.position.y;
-        //gameObject.transform.position = new Vector3(0, startElevation - 0f, 15f);
-
-
         GenerateSpawnPoints();
-
-        //TopRowTracking();
     }
     public void GenerateSpawnPoints()
     {
@@ -202,8 +187,8 @@ public class DispenserController : MonoBehaviour
         }
         else
         {
-            Vector3 dampTarget = new Vector3(playerTransform.position.x + UnityEngine.Random.Range(-trackAccuracyDamp -.15f, trackAccuracyDamp -.15f),
-                                                playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp -.9f, trackAccuracyDamp -.9f),
+            Vector3 dampTarget = new Vector3(playerTransform.position.x + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
+                                                playerTransform.position.y + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp),
                                                     playerTransform.position.z + UnityEngine.Random.Range(-trackAccuracyDamp, trackAccuracyDamp));
 
             dir = (dampTarget - newProj.transform.position).normalized * projectileSpeed;

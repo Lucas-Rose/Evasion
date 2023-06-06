@@ -15,6 +15,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private bool canTakeDamage;
     [SerializeField] private float currentTime;
 
+    [Header("Audio")]
+    [SerializeField] private List<AudioSource> hitSounds;
+
     private Animator healthAnimator;
     private GameManager gManager;
     
@@ -84,7 +87,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("projectile"))
         {
             takeDamage(damageAmount);
-            Debug.Log("hit");
+            hitSounds[Random.Range(0, hitSounds.Count)].Play();
         }
     }
     public void SetHealthAnimator()

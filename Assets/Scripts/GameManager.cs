@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject checkPointCanvas;
     [SerializeField] private GameObject completeCanvas;
     [SerializeField] private Camera camera;
+    [SerializeField] private GameObject missDetector;
 
     private bool seated;
 
@@ -183,8 +184,7 @@ public class GameManager : MonoBehaviour
         dAnimator = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<Animator>();
         checkPoint = GameObject.Find("checkPointCanvas(Clone)").GetComponent<CheckPoint>();
         activeScreen.GetComponent<Canvas>().worldCamera = camera;
-        Debug.Log(activeScreen.GetComponent<Canvas>().worldCamera);
         activeScreen.GetComponent<Canvas>().planeDistance = .5f;
-        Debug.Log(activeScreen.GetComponent<Canvas>().planeDistance);
+        missDetector.SetActive(true);
     }
 }

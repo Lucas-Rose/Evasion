@@ -289,7 +289,7 @@ public class DispenserController : MonoBehaviour
     public void spawnBlock(float xPos, float yPos, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale, float speedMod, bool defaultMat)
     {
         //to set positions not tied to canons. This is more environmental and at this point not designed to function with seated play.
-        blockPos = new Vector3(xPos, yPos, 15);
+        blockPos = new Vector3(xPos, yPos, 40);
         //To create shapes such as beams, split angles, etc. Can slant.
         blockRot = Quaternion.Euler(xRot, yRot, zRot);
         GameObject newBlock = Instantiate(block, blockPos, transform.rotation * blockRot);

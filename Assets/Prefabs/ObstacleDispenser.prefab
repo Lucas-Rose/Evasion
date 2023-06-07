@@ -72,6 +72,7 @@ MonoBehaviour:
   section5Speed: 18
   section6Speed: 22
   startElevation: 0
+  diagonalMat: {fileID: 2100000, guid: 5bbe86d4fff73ec4da4a7d247a3d8271, type: 2}
 --- !u!95 &8031932764856768345
 Animator:
   serializedVersion: 3

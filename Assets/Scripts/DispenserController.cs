@@ -178,7 +178,7 @@ public class DispenserController : MonoBehaviour
 //xPos, yPos, xRot, yRot, zRot, xScale, yScale, zScale, speedMod. passing an AnimationEvent function is required to use multiple.
     public void BlockFullWallFlat(float yScale)
     {
-        spawnBlock(0, 0, 0, 0, 0, 20, yScale, 3, 0);
+        //spawnBlock(0, 0, 0, 0, 0, 20, yScale, 3, 0);
     }
 
     public void SpawnProjectile(int cannon, bool tracking)

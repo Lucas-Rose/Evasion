@@ -87,7 +87,9 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("projectile"))
         {
             takeDamage(damageAmount);
+            Debug.Log("Collision");
             hitSounds[Random.Range(0, hitSounds.Count)].Play();
+            
         }
     }
     public void SetHealthAnimator()

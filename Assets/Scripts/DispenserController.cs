@@ -224,6 +224,10 @@ public class DispenserController : MonoBehaviour
     {
         spawnBlock(5.88f, -0.57f, 0, 0, -61, 13.9f, 30.3f, 3, 0, false);
     }
+    public void DiagonalBottomRight2()
+    {
+        spawnBlock(-1.65f, 1.37f, 0, 0, -61, 13.9f, 30.3f, 3, 0, false);
+    }
     public void DiagonalTopLeft1()
     {
         spawnBlock(-2.26f, 10f, 0, 0, 119, 13.9f, 30.3f, 3, 0, false);
@@ -231,6 +235,17 @@ public class DispenserController : MonoBehaviour
     public void DiagonalTopRight1()
     {
         spawnBlock(2.26f, 10f, 0, 0, -119, 13.9f, 30.3f, 3, 0, false);
+    }
+    public void DiagonalTopRight2()
+    {
+        spawnBlock(2.26f, -0.57f, 0, 180, -61, 13.9f, 30.3f, 3, 0, false);
+    }
+     public void DiagonalCornerFrame()
+    {
+        spawnBlock(-12, -0.57f, 180, 0, -61, 13.9f, 30.3f, 3, 0, false);
+        spawnBlock(12, -0.57f, 0, 0, -61, 13.9f, 30.3f, 3, 0, false);
+        spawnBlock(-12, 12.62f, 0, 0, -61, 13.9f, 30.3f, 3, 0, false);
+        spawnBlock(12, 12.62f, 0, 180, -61, 13.9f, 30.3f, 3, 0, false);
     }
 
     public void SpawnProjectile(int cannon, bool tracking)

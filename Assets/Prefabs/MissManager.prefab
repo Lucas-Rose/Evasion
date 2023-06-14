@@ -60,6 +60,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missSounds:
   - {fileID: 3453085748589150633}
+  clips:
+  - {fileID: 8300000, guid: 5697e7c7cceb0434e976561a27d055f1, type: 3}
+  audSource: {fileID: 0}
+  minVolumePercentage: 0.3
+  minPitchPercentage: 0.3
+  maxPitchPercentage: 1
 --- !u!82 &3453085748589150633
 AudioSource:
   m_ObjectHideFlags: 0

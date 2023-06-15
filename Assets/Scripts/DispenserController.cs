@@ -129,6 +129,31 @@ public class DispenserController : MonoBehaviour
             SpawnProjectile(i, false);
         }
     }
+    public void ColumnsStraight(int col)
+    {
+        if(col < 0 || col > columns-1)
+        {
+            return;
+        }
+
+        for(int i = 0; i < rows; i++)
+        {
+            SpawnProjectile(col+i*columns, false);
+        }
+    }
+
+    public void ColumnsTracking(int col)
+    {
+        if(col < 0 || col > columns-1)
+        {
+            return;
+        }
+
+        for(int i = 0; i < rows; i++)
+        {
+            SpawnProjectile(col+i*columns, true);
+        }
+    }
 
     public void TopRowTracking()
     {

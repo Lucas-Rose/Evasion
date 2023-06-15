@@ -65,11 +65,11 @@ MonoBehaviour:
   block: {fileID: 5019438829881354460, guid: c94f95b3f36db40499e7cc5b37798b08, type: 3}
   trackAccuracyDamp: 0.1
   projectileSpeed: 12
-  section1Speed: 12
-  section2Speed: 12
-  section3Speed: 12
-  section4Speed: 16
-  section5Speed: 18
+  section1Speed: 15
+  section2Speed: 16
+  section3Speed: 17
+  section4Speed: 20
+  section5Speed: 20
   section6Speed: 22
   startElevation: 0
   diagonalMat: {fileID: 2100000, guid: 5bbe86d4fff73ec4da4a7d247a3d8271, type: 2}

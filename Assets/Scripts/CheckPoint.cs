@@ -53,6 +53,8 @@ public class CheckPoint : MonoBehaviour
         lastCheckPointIndex++;
         checkPointTimes.RemoveAt(0);
         anim.SetTrigger("checkpoint");
+
+        dController = GameObject.Find("ObstacleDispenser(Clone)").GetComponent<DispenserController>();
         counter++;
         switch(counter)
         {

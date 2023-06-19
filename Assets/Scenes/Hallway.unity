@@ -1234,7 +1234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f994fdb5e834343a56174c745c13de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endTime: 230
+  endTime: 235
   rewindSound: {fileID: 482014968}
   music: {fileID: 424841332}
   menuMusic: {fileID: 482014969}
@@ -1689,9 +1689,9 @@ BoxCollider:
   m_GameObject: {fileID: 609370502}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &609370506
 AudioSource:

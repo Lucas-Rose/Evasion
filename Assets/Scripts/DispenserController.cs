@@ -70,14 +70,22 @@ public class DispenserController : MonoBehaviour
 
 
         GenerateSpawnPoints();
-
-        //TopRowTracking();
     }
     public void GenerateSpawnPoints()
     {
 
 
         Vector3 container = spawnPointContainer.transform.position;
+
+        //The objects are spawned on a grid based on these modifiers. Some Animation Events spawn at a float value position based on this.
+        //0 is the lowest row and leftmost column.
+		//We suggest that in order to avoid this causing issues down the line that a column/row value be determined early on
+        //as it can be tedious to change other values after adjusting this.
+
+        //eg for columns = 5, rows = 3:
+        // 10   11  12  13  14
+        // 5    6   7   8   9
+        // 0    1   2   3   4
         if (seated)
         {
             for (int i = 0; i < rows; i++)
@@ -104,6 +112,9 @@ public class DispenserController : MonoBehaviour
             }
         }
     }
+
+
+//  **Animation Event Functions**
 
     public void SingleTracking(int cannon)
     {
@@ -176,63 +187,71 @@ public class DispenserController : MonoBehaviour
         }
     }
 
-//Since Unity only allows one input for animation events anything specific requires a custom function to be made here.
-//xPos, yPos, xRot, yRot, zRot, xScale, yScale, zScale, speedMod, defaultMat?). passing an AnimationEvent function is required to use multiple.
 
-//Vector3 doesn't show up in editor.
-    public void BlockWallFullBottomFlat(float yScale)
-    {
-        //since the floor is see through this sets the bottom to be equal to the floor.
-        //For this reason, Height of wall = 2*yScale.
-        float tempYPos = 0.5f + (yScale/2);
+    //The following is unused - intended for different block / object types. Objects created through this method lag on Game View
+    //but not on Scene View.
 
-        //xScale = 20 takes full arena width.
-        spawnBlock(0, tempYPos, 0, 0, 0, 20, yScale, 3, 0, true);
-    }
-    public void BlockWallFullTopFlat(float yScale)
-    {
-        //10.5 = roof
-        float tempYPos = 10.5f - (yScale/2);
 
-        //xScale = 20 takes full arena width.
-        spawnBlock(0, tempYPos, 0, 0, 0, 20, yScale, 3, 0, true);
-    }
+// //Since Unity only allows one input for animation events anything specific requires a custom function to be made here.
+// //xPos, yPos, xRot, yRot, zRot, xScale, yScale, zScale, speedMod, defaultMat?). passing an AnimationEvent function is required to use multiple.
 
-    public void BlockWallFullLeftFlat(float xScale)
-    {
-        //xPos = -10 = left arena center
-        float tempXPos = (-10 + xScale/2);
+// //Vector3 doesn't show up in editor.
+//     public void BlockWallFullBottomFlat(float yScale)
+//     {
+//         //since the floor is see through this sets the bottom to be equal to the floor.
+//         //For this reason, Height of wall = 2*yScale.
+//         float tempYPos = 0.5f + (yScale/2);
 
-        //yScale = 11 takes full arena height.
-        //yPos = 6 required for this to align to center.
-        spawnBlock(tempXPos, 6f, 0, 0, 0, xScale, 11, 3, 0, true);
-    }
-    public void BlockWallFullRightFlat(float xScale)
-    {
-        float tempXPos = (10 - xScale/2);
-        spawnBlock(tempXPos, 6, 0, 0, 0, xScale, 11, 3, 0, true);
-    }
+//         //xScale = 20 takes full arena width.
+//         spawnBlock(0, tempYPos, 0, 0, 0, 20, yScale, 3, 0, true);
+//     }
+//     public void BlockWallFullTopFlat(float yScale)
+//     {
+//         //10.5 = roof
+//         float tempYPos = 10.5f - (yScale/2);
 
-    //These are too finicky and require custom values for any unique type.
+//         //xScale = 20 takes full arena width.
+//         spawnBlock(0, tempYPos, 0, 0, 0, 20, yScale, 3, 0, true);
+//     }
 
-    //Use different material for all diagonals. The transparent one doesn't work because it shows the bits that are hidden by the walls.
-    public void DiagonalBottomLeft1()
-    {
-        spawnBlock(-5.88f, -0.57f, 0, 0, 61, 13.9f, 30.3f, 3, 0, false);
-    }
-    public void DiagonalBottomRight1()
-    {
-        spawnBlock(5.88f, -0.57f, 0, 0, -61, 13.9f, 30.3f, 3, 0, false);
-    }
-    public void DiagonalTopLeft1()
-    {
-        spawnBlock(-2.26f, 10f, 0, 0, 119, 13.9f, 30.3f, 3, 0, false);
-    }
-    public void DiagonalTopRight1()
-    {
-        spawnBlock(2.26f, 10f, 0, 0, -119, 13.9f, 30.3f, 3, 0, false);
-    }
+//     public void BlockWallFullLeftFlat(float xScale)
+//     {
+//         //xPos = -10 = left arena center
+//         float tempXPos = (-10 + xScale/2);
 
+//         //yScale = 11 takes full arena height.
+//         //yPos = 6 required for this to align to center.
+//         spawnBlock(tempXPos, 6f, 0, 0, 0, xScale, 11, 3, 0, true);
+//     }
+//     public void BlockWallFullRightFlat(float xScale)
+//     {
+//         float tempXPos = (10 - xScale/2);
+//         spawnBlock(tempXPos, 6, 0, 0, 0, xScale, 11, 3, 0, true);
+//     }
+
+//     //These are too finicky and require custom values for any unique type.
+
+//     //Use different material for all diagonals. The transparent one doesn't work because it shows the bits that are hidden by the walls.
+//     public void DiagonalBottomLeft1()
+//     {
+//         spawnBlock(-5.88f, -0.57f, 0, 0, 61, 13.9f, 30.3f, 3, 0, false);
+//     }
+//     public void DiagonalBottomRight1()
+//     {
+//         spawnBlock(5.88f, -0.57f, 0, 0, -61, 13.9f, 30.3f, 3, 0, false);
+//     }
+//     public void DiagonalTopLeft1()
+//     {
+//         spawnBlock(-2.26f, 10f, 0, 0, 119, 13.9f, 30.3f, 3, 0, false);
+//     }
+//     public void DiagonalTopRight1()
+//     {
+//         spawnBlock(2.26f, 10f, 0, 0, -119, 13.9f, 30.3f, 3, 0, false);
+//     }
+
+
+
+//Here, Canon refers to the spawn points created by the Columns and Rows values.
     public void SpawnProjectile(int cannon, bool tracking)
     {
         if (cannon > spawnPoints.Count)
@@ -282,39 +301,35 @@ public class DispenserController : MonoBehaviour
             Destroy(projectileContainer.transform.GetChild(0).gameObject);
         }
     }
+//For the unused functions - messy:
 
 //different shapes can use a similar method. This one is for 'walls' and big blocks that take up large parts of the screen.
 //This is basically a simplified version of the above method with more data entries for specificity. Most can be left empty for most shapes.
 //speedMod is a modifier that makes it possible to spawn blocks that are faster or slower than a section's norm by speedMod.
-    public void spawnBlock(float xPos, float yPos, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale, float speedMod, bool defaultMat)
-    {
-        //to set positions not tied to canons. This is more environmental and at this point not designed to function with seated play.
-        blockPos = new Vector3(xPos, yPos, 40);
-        //To create shapes such as beams, split angles, etc. Can slant.
-        blockRot = Quaternion.Euler(xRot, yRot, zRot);
-        GameObject newBlock = Instantiate(block, blockPos, transform.rotation * blockRot);
-        newBlock.transform.localScale = new Vector3(xScale, yScale, zScale);
-        if(!defaultMat)
-        {
-            newBlock.GetComponent<MeshRenderer>().material = diagonalMat;
-        }
-
-        Rigidbody rb = newBlock.GetComponent<Rigidbody>();
-        Vector3 dir;
-        Vector3 target = new Vector3(newBlock.transform.position.x, newBlock.transform.position.y, newBlock.transform.position.z - 30);
-
-        dir = (target - newBlock.transform.position).normalized * (projectileSpeed + speedMod);
-
-        rb.useGravity = false;
-        rb.velocity = dir;
-
-        //remember to add clean up
-
-        //scuffed method attached to the gameobject itself for now.
-    }
-
-    // public void spawnCylinder(float xPos, float yPos, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale, float speedMod)
+    // public void spawnBlock(float xPos, float yPos, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale, float speedMod, bool defaultMat)
     // {
+    //     //to set positions not tied to canons. This is more environmental and at this point not designed to function with seated play.
+    //     blockPos = new Vector3(xPos, yPos, 40);
+    //     //To create shapes such as beams, split angles, etc. Can slant.
+    //     blockRot = Quaternion.Euler(xRot, yRot, zRot);
+    //     GameObject newBlock = Instantiate(block, blockPos, transform.rotation * blockRot);
+    //     newBlock.transform.localScale = new Vector3(xScale, yScale, zScale);
+    //     if(!defaultMat)
+    //     {
+    //         newBlock.GetComponent<MeshRenderer>().material = diagonalMat;
+    //     }
 
+    //     Rigidbody rb = newBlock.GetComponent<Rigidbody>();
+    //     Vector3 dir;
+    //     Vector3 target = new Vector3(newBlock.transform.position.x, newBlock.transform.position.y, newBlock.transform.position.z - 30);
+
+    //     dir = (target - newBlock.transform.position).normalized * (projectileSpeed + speedMod);
+
+    //     rb.useGravity = false;
+    //     rb.velocity = dir;
+
+    //     //remember to add clean up
+
+    //     //scuffed method attached to the gameobject itself for now.
     // }
 }

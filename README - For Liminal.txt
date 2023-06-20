@@ -103,8 +103,5 @@ ProgressionManager:*
 ScoreManager:
 - Not currently in use. Used by ScoreCanvas.
 
-ScuffedCamFinder:
-- Deprecated code
-
 WallSelfDestruct:
 - Used by commented out, unused functions in ObstacleDispenser (it's a clean up script).
